@@ -18,7 +18,8 @@ fi
 
 url_libevent=https://github.com/downloads/libevent/libevent/libevent-2.0.19-stable.tar.gz
 url_repcached=http://mdounin.ru/files/repcached-2.3-1.4.5.patch.gz
-url_memcached=http://memcached.googlecode.com/files/memcached-1.4.5.tar.gz
+#url_memcached=http://memcached.googlecode.com/files/memcached-1.4.5.tar.gz
+url_memcached=https://github.com/downgoon/memcloud/files/626324/memcached-1.4.5.tar.gz
 path_software=/opt/memcloud/
 
 debug=true
