@@ -19,19 +19,15 @@ fi
 url_libevent=https://github.com/downloads/libevent/libevent/libevent-2.0.19-stable.tar.gz
 url_repcached=http://mdounin.ru/files/repcached-2.3-1.4.5.patch.gz
 url_memcached=http://memcached.googlecode.com/files/memcached-1.4.5.tar.gz
+path_software=/opt/memcloud/
 
 debug=true
 
-#url_libevent=http://10.10.83.84/libevent-2.0.19-stable.tar.gz
-#url_repcached=http://10.10.83.84/repcached-2.3-1.4.5.patch.gz
-#url_memcached=http://10.10.83.84/memcached-1.4.5.tar.gz
+##################################################################################
 
-
-path_software=/opt/software/memcloud/
 if [ ! -L ~/memcloud ]; then
    /bin/ln -s $path_software ~/memcloud
 fi
-##################################################################################
 
 
 curdir=$(pwd)
@@ -39,11 +35,15 @@ curdir=$(pwd)
 if [ ! -e $path_software ]; then
   /bin/mkdir -p $path_software   
 fi
+if [ ! -e $path_software ]; then
+   echo "ERROR: install path $path_software create fail, please change another path by editing var named 'path_software' in CONFIGURATIONS of this script"
+   exit 2 
+fi
 
 #Download libevent, repcached and memcached if they are not found in the specified path
-file_libevent=`echo $url_libevent | grep -P -o 'libevent.*$'`
-file_repcached=`echo $url_repcached | grep -P -o 'repcached.*$'`
-file_memcached=`echo $url_memcached | grep -P -o 'memcached.*$'`
+file_libevent=`echo $url_libevent | grep -P -o 'libevent-.*$'`
+file_repcached=`echo $url_repcached | grep -P -o 'repcached-.*$'`
+file_memcached=`echo $url_memcached | grep -P -o 'memcached-.*$'`
 
 unzipdir_libevent=`echo $file_libevent | awk -F'.tar' '{ printf "%s", $1 }'`
 unzipdir_memcached=`echo $file_memcached | awk -F'.tar' '{ printf "%s", $1 }'`
