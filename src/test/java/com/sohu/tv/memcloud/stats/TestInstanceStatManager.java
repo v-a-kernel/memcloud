@@ -17,6 +17,7 @@ import com.sohu.tv.memcloud.stats.dao.impl.InstanceStatManagerImpl;
 import com.sohu.tv.memcloud.stats.model.Constants;
 import com.sohu.tv.memcloud.stats.model.StatDBObject;
 
+
 public class TestInstanceStatManager {
 
 	public IInstanceStatManager stat ;

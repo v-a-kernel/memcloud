@@ -439,6 +439,24 @@
 				</configuration>
 			</plugin>
 
+			<!-- skip some junits -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<skip>false</skip>
+					<includes>
+						<include>**/**.java</include>
+						<include>**/**.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/TestInstanceStatManager.java</exclude>
+						<exclude>**/TestMemInstanceMonitor.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
 			<!-- global exclusions -->
 
 			<plugin>
