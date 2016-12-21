@@ -38,7 +38,7 @@ public class MongodbFactory {
             MongoOptions options = new MongoOptions();//REFER: http://api.mongodb.org/java/2.7.3/com/mongodb/MongoOptions.html
             Mongo mongo = new Mongo(addr,options);
             db = mongo.getDB(dbname);
-            if (user!=null && pwd!=null) {
+            if (user!=null && pwd!=null && user.trim().length() > 0 && pwd.trim().length() > 0) {
                 boolean authed = db.authenticate(user, pwd.toCharArray());
                 if (! authed ) {
                     throw new IllegalArgumentException("Mongodb User Or passowrd Wrong");

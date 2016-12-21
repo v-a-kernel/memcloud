@@ -19,6 +19,7 @@
         <property name="locations">
         	<list> 
 	        	<value>classpath:jdbc.properties</value>
+	        	<value>classpath:mongo.properties</value>
         	</list>
         </property>
     </bean>
@@ -89,23 +90,13 @@
 		<property name="servers" value="localhost:11211"/>
 	</bean>
 	
-	<!-- 27017 -->
-	<bean id="mongodbFactory" class="com.sohu.tv.memcloud.mongodb.MongodbFactory">
-		<constructor-arg index="0" value="10.213.57.166"/> 
-		<constructor-arg index="1" value="10017"/>
-		<constructor-arg index="2" value="memstat"/>
-    </bean>
-    
-    
-    <!-- 
     <bean id="mongodbFactory" class="com.sohu.tv.memcloud.mongodb.MongodbFactory">
-        <constructor-arg index="0" value="10.213.57.166"/> 
-        <constructor-arg index="1" value="10017"/>
-        <constructor-arg index="2" value="memstat"/>
-        <constructor-arg index="3" value="memstat"/>
-        <constructor-arg index="4" value="tr8255B6"/>
+        <constructor-arg index="0" value="${mongo.host}"/> 
+        <constructor-arg index="1" value="${mongo.port}"/>
+        <constructor-arg index="2" value="${mongo.dbname}"/>
+        <constructor-arg index="3" value="${mongo.username}"/>
+        <constructor-arg index="4" value="${mongo.password}"/>
     </bean>
-    -->
     
     
     <bean id="instatnceStatManager" class="com.sohu.tv.memcloud.stats.dao.impl.InstanceStatManagerImpl" />
