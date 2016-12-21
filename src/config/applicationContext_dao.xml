@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd"
+>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!-- DataSource -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+			<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+			<property name="jdbcUrl" value="jdbc:mysql://220.181.23.69:3309/test?characterEncoding=GBK"/>
+			<property name="user" value="test"/>
+			<property name="password" value="testpwd"/>
+			<property name="initialPoolSize" value="1"/>
+			<property name="minPoolSize" value="1"/> 
+			<property name="maxPoolSize" value="5"/>
+			<property name="maxIdleTime" value="18000"/>
+			<property name="maxStatements" value="20"/>
+			<property name="autoCommitOnClose" value="false"/>
+		</bean>
+
+	<!-- SessionFactory -->
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+			<property name="hibernateProperties">
+				<value>
+					hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+					hibernate.query.substitutions=true 'Y', false 'N'
+					hibernate.cache.use_second_level_cache=false
+				</value>
+			</property>
+		</bean>
+
+	<!-- DAO -->
+		<bean id="entityDao" class="io.downgoon.jresty.data.dao.impl.HibernateEntityDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+
+</beans>

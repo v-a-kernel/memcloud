@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd"
+>
+
+	<!-- Cache -->
+
+		<bean id="localCacheEhCache" class="io.downgoon.jresty.data.cache.support.impl.ehcache.EhCacheImpl">
+			<property name="cacheConfigFile" value="/ehcache-default.xml"/>
+			<property name="joinCluster" value="true"/>
+			<property name="jgroupsConfigFile" value="/jgroups-default.properties"/>
+		</bean>
+
+		<bean id="remoteCacheSpyMemcached" class="io.downgoon.jresty.data.cache.support.impl.SpyMemcachedCacheImpl">
+			<construct-arg index="1"><value>"220.181.23.205:20001"</value></construct-arg>
+		</bean>
+
+		<bean id="cacheManager" class="io.downgoon.jresty.data.cache.support.impl.CacheManagerImpl">
+			<property name="localCache" ref="localCacheEhCache"/>
+			<property name="remoteCache" ref="remoteCacheSpyMemcached"/>
+			<property name="useLocalCache" value="false"/>
+			<property name="useRemoteCache" value="false"/>
+		</bean>
+
+</beans>

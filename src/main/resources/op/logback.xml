@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{MM-dd HH:mm:ss.SSS} %5p %c{1}:%L - %m%n</Pattern>
+		</layout>
+	</appender>
+	
+	<logger name="com.google.code.yanf4j" level="info" additivity="false">
+       <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="net.rubyeye" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+	
+	<root level="info">
+		<appender-ref ref="STDOUT"/>
+	</root>
+	
+</configuration>
+
