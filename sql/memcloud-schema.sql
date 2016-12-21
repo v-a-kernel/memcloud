@@ -6,6 +6,17 @@ Target Host: localhost
 Target Database: memcloud
 Date: 2012-7-1 15:11:32
 */
+
+/*
+
+grant select,delete,update,create on memcloud.* to devacc@"%" identified by "123swl";
+grant all privileges on memcloud.* to devacc@"localhost" identified by "123swl";
+grant all privileges on memcloud.* to devacc@"127.0.0.1" identified by "123swl";
+grant all privileges on memcloud.* to devacc@"CDCS-213057166" identified by "123swl";
+flush privileges;
+
+ * */
+
 create database if not exists memcloud CHARACTER SET=utf8  COLLATE=utf8_unicode_ci;
 use memcloud;
 
