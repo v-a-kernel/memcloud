@@ -24,9 +24,7 @@
 					<param name="excludeMethods"></param>
 				</interceptor-ref>
 				
-				<!-- 
 				<interceptor-ref name="crossDomainInterceptor" />
-				 -->
 			</interceptor-stack>
 
 		</interceptors>
