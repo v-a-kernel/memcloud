@@ -10,8 +10,8 @@ import org.apache.struts2.StrutsStatics;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.sohu.tv.utils.DynamicProperties;
-import com.sohu.tv.utils.MD5;
+import io.memcloud.utils.DynamicProperties;
+import io.memcloud.utils.MD5;
 
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 

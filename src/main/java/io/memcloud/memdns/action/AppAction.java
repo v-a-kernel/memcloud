@@ -13,7 +13,7 @@ import io.memcloud.memdns.dao.IAppDescDao;
 import io.memcloud.memdns.dao.IAppMemGroupDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
 import io.memcloud.memdns.model.DataDict;
-import com.sohu.tv.utils.session.core.IAccount;
+import io.memcloud.utils.session.core.IAccount;
 
 public class AppAction extends BaseAction {
 

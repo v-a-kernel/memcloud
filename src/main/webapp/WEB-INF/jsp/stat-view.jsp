@@ -1,7 +1,7 @@
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="com.sohu.tv.utils.MD5,io.memcloud.stats.MemStatSummary" %>
-<%@page import="com.sohu.tv.utils.StatDateType,com.sohu.tv.utils.MyUtils" %>
+<%@page import="io.memcloud.utils.MD5,io.memcloud.stats.MemStatSummary" %>
+<%@page import="io.memcloud.utils.StatDateType,io.memcloud.utils.MyUtils" %>
 <%
 UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
 Map<String,Object> attachment = (Map<String,Object>)up.getAttachment();

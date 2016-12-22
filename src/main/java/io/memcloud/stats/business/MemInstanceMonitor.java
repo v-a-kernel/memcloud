@@ -20,7 +20,7 @@ import io.memcloud.memdns.dao.entry.MemFault;
 import io.memcloud.stats.dao.IMemFaultDao;
 import io.memcloud.stats.util.EmailHandler;
 import io.memcloud.stats.util.HttpClientHandler;
-import com.sohu.tv.utils.DynamicProperties;
+import io.memcloud.utils.DynamicProperties;
 
 /**
  * @author ganghuawang

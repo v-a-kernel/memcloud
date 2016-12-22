@@ -9,7 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 
-import com.sohu.tv.utils.DynamicProperties;
+import io.memcloud.utils.DynamicProperties;
 
 /**
  * JSONP接口进行域名限制控制，对于第三方的域名需要在tv.sohu.com配置白名单才可以访问

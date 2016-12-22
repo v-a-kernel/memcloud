@@ -7,8 +7,8 @@ import org.apache.struts2.StrutsStatics;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.sohu.tv.utils.ClientInfo;
-import com.sohu.tv.utils.DynamicProperties;
+import io.memcloud.utils.ClientInfo;
+import io.memcloud.utils.DynamicProperties;
 
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 

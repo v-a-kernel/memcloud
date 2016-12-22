@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.opensymphony.xwork2.ActionContext;
 import io.memcloud.memdns.model.Constants;
-import com.sohu.tv.utils.session.core.IAccount;
+import io.memcloud.utils.session.core.IAccount;
 
 import io.downgoon.jresty.rest.struts2.action.UnifiedRestAction;
 

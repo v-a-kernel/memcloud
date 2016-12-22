@@ -18,7 +18,7 @@ import io.memcloud.stats.MemStatSummary;
 import io.memcloud.stats.dao.IInstanceStatManager;
 import io.memcloud.stats.dao.IMemStatDao;
 import io.memcloud.stats.model.StatDBObject;
-import com.sohu.tv.utils.StatDateType;
+import io.memcloud.utils.StatDateType;
 
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
 

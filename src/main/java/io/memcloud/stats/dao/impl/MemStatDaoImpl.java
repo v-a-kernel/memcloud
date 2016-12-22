@@ -12,7 +12,7 @@ import io.memcloud.stats.dao.IInstanceStatManager;
 import io.memcloud.stats.dao.IMemStatDao;
 import io.memcloud.stats.model.Constants;
 import io.memcloud.stats.model.StatDBObject;
-import com.sohu.tv.utils.StatDateType;
+import io.memcloud.utils.StatDateType;
 
 /**
  * cmdType {0:GET,1:SET,2:Hit,3:Mis}

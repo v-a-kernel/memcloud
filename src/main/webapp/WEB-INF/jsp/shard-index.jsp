@@ -2,7 +2,7 @@
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
 <%@page import="java.util.*, io.memcloud.memdns.dao.entry.AppMemGroup,io.memcloud.memdns.dao.entry.AppDesc" %>
 <%@page import="io.memcloud.stats.MemStatSummary" %>
-<%@page import="com.sohu.tv.utils.StatDateType,com.sohu.tv.utils.MyUtils" %>
+<%@page import="io.memcloud.utils.StatDateType,io.memcloud.utils.MyUtils" %>
 
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%

@@ -6,8 +6,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionInvocation;
-import com.sohu.tv.utils.Base64;
-import com.sohu.tv.utils.DynamicProperties;
+import io.memcloud.utils.Base64;
+import io.memcloud.utils.DynamicProperties;
 
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;

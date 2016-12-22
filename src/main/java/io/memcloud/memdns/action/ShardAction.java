@@ -13,7 +13,7 @@ import io.memcloud.memdns.dao.entry.AppDesc;
 import io.memcloud.memdns.dao.entry.AppMemGroup;
 import io.memcloud.stats.MemStatSummary;
 import io.memcloud.stats.dao.IMemStatDao;
-import com.sohu.tv.utils.session.core.IAccount;
+import io.memcloud.utils.session.core.IAccount;
 
 /**
  * 我的监控->全部实例（把所有应用的分片情况都列表出来）

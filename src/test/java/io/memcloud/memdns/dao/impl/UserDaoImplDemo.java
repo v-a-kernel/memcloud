@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import io.memcloud.memdns.dao.IUserDao;
 import io.memcloud.memdns.dao.entry.User;
-import com.sohu.tv.utils.MD5;
+import io.memcloud.utils.MD5;
 
 public class UserDaoImplDemo {
 

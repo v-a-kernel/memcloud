@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	
-	<bean name="dynamicConfiguration" class="com.sohu.tv.utils.DynamicProperties">
+	<bean name="dynamicConfiguration" class="io.memcloud.utils.DynamicProperties">
 		<description>constructor method signature: String fileName,long delay,long period,String name,String charset</description>
 		<constructor-arg index="0" value="classpath:dynamic.properties"/>
 		<constructor-arg index="1" value="10000"/>
@@ -29,7 +29,7 @@
         </property>
     </bean>
     
-    <bean id="httpUtil" class="com.sohu.tv.utils.HttpUtil" init-method="init" scope="singleton">
+    <bean id="httpUtil" class="io.memcloud.utils.HttpUtil" init-method="init" scope="singleton">
     	<property name="httpClient"  ref="httpClient" />
     </bean>
     	

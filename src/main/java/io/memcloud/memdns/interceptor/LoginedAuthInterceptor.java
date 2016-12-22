@@ -6,9 +6,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.sohu.tv.utils.session.IHttpTracker;
-import com.sohu.tv.utils.session.core.IAccount;
-import com.sohu.tv.utils.session.core.IllegalSessionException;
+import io.memcloud.utils.session.IHttpTracker;
+import io.memcloud.utils.session.core.IAccount;
+import io.memcloud.utils.session.core.IllegalSessionException;
 
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 

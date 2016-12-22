@@ -15,7 +15,7 @@ import io.memcloud.memdns.dao.IScaleoutAppealDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
 import io.memcloud.memdns.dao.entry.AppMemGroup;
 import io.memcloud.memdns.dao.entry.ScaleoutAppeal;
-import com.sohu.tv.utils.session.core.IAccount;
+import io.memcloud.utils.session.core.IAccount;
 
 public class ScaleAction extends BaseAction {
 

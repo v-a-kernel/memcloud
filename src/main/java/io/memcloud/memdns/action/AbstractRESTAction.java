@@ -15,7 +15,7 @@
 //import com.opensymphony.xwork2.ActionContext;
 //import com.opensymphony.xwork2.ModelDriven;
 //import io.memcloud.memdns.model.UnifiedResponse;
-//import com.sohu.tv.utils.MyUtils;
+//import io.memcloud.utils.MyUtils;
 //
 //import io.downgoon.jresty.rest.struts2.action.UnifiedRestAction;
 //

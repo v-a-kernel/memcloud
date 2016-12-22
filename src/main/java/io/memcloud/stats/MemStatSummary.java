@@ -4,8 +4,8 @@ import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import com.sohu.tv.utils.MyUtils;
-import com.sohu.tv.utils.StatDateType;
+import io.memcloud.utils.MyUtils;
+import io.memcloud.utils.StatDateType;
 
 /**
  * REFER:  http://blog.163.com/czg_e/blog/static/46104561201132852042812/ 
