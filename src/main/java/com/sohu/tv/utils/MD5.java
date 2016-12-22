@@ -17,10 +17,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Md5加密
- * 
- * @author skyz <skyzhw@gmail.com>
- * @version 1.0
+ * Md5 摘要
  */
 
 public class MD5 {

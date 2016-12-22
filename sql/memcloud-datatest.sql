@@ -71,7 +71,7 @@ INSERT INTO `scaleout_appeal` VALUES ('11', '10006', 'apptest', '10001', '1', '2
 INSERT INTO `scaleout_appeal` VALUES ('12', '10007', 'ads1', '10001', '1', '256', '1', '1342059511565', '1342061315698', '1', '256');
 INSERT INTO `scaleout_appeal` VALUES ('13', '10010', 'VideoSharingSys', '10003', '2', '1024', '1', '1343110659406', '1343111039559', '2', '1024');
 INSERT INTO `scaleout_appeal` VALUES ('14', '10011', 'vrspoll', '10001', '3', '1024', '1', '1346378609153', '1346378643552', '3', '1024');
-INSERT INTO `user` VALUES ('10001', 'liwei', '2dc3cfade3264836ca302db8035d2238', null, '13810855235');
+INSERT INTO `user` VALUES ('10001', 'liwei', 'e10adc3949ba59abbe56e057f20f883e', null, '13810855235');
 INSERT INTO `user` VALUES ('10002', 'weiweili', 'e10adc3949ba59abbe56e057f20f883e', null, null);
 INSERT INTO `user` VALUES ('10003', 'guangchaowu', 'e10adc3949ba59abbe56e057f20f883e', 'guangchaowu@sohu-inc.com', '');
-INSERT INTO `user` VALUES ('10004', 'ganghuawang', '2dc3cfade3264836ca302db8035d2238', null, '15010983255');
+INSERT INTO `user` VALUES ('10004', 'ganghuawang', 'e10adc3949ba59abbe56e057f20f883e', null, '15010983255');

@@ -25,7 +25,7 @@ function showIndexFlash(width,height,flashSRC,flashObjectName,vars,flashContaine
             
             /////////////////// 结束
             
-		// <!-- For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. --> 
+        // <!-- For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. --> 
         var swfVersionStr = "10.0.2";
         // <!-- To use express install, set to playerProductInstall.swf, otherwise the empty string. -->
         var xiSwfUrlStr = "http://www.adobe.com/go/getflashplayer";
@@ -50,7 +50,7 @@ function showIndexFlash(width,height,flashSRC,flashObjectName,vars,flashContaine
             _ivWidth, _ivHeight, 
             swfVersionStr, xiSwfUrlStr, 
             flashvars, params, attributes);
-        // <!-- JavaScript enabled so display the flashContent div in case it is not replaced with a swf object. -->
+		//<!-- JavaScript enabled so display the flashContent div in case it is not replaced with a swf object. -->
 		swfobject.createCSS("#flashContent", "display:block;text-align:left;");
        
 }
