@@ -49,7 +49,7 @@ public class MemCloudClient implements IMemCloudClient {
 			throw new IllegalStateException("memDNSRefresh required for "+MemCloudClient.class.getSimpleName());
 		}
 		
-		synchronized (mutex4Start) {//double-checked locking on memDNSRefreshThread instance
+		synchronized (mutex4Start) { // double-checked locking on memDNSRefreshThread instance
 			if (memDNSRefreshThread==null) {
 				memDNSRefreshThread = new Thread(new Runnable() {
 					
@@ -69,18 +69,18 @@ public class MemCloudClient implements IMemCloudClient {
 									log.warn("mem dns refresh retun NULL for {}", appid);
 								}
 								if (curDNS != null) {
-									List<MemShard> gr = curDNS.diffRemoved(lastestDNS);//group removed = {lastestDNS} - {curDNS}
+									List<MemShard> gr = curDNS.diffRemoved(lastestDNS); // group removed = {lastestDNS} - {curDNS}
 									if (gr!=null && gr.size()>0) {
 										String slr = MemShard.group2conf(gr);
-										memcachedClient.removeServer(slr.replaceAll(",", " ") );//XMemcached.removeServer 不支持主从格式，只支持列表格式
+										memcachedClient.removeServer(slr.replaceAll(",", " ") ); // XMemcached.removeServer 不支持主从格式，只支持列表格式
 										log.info("remove servers ok {}",slr);
 									}
 									
-									List<MemShard> ga = curDNS.diffAppended(lastestDNS);//group appended = {curDNS} - {lastestDNS}
+									List<MemShard> ga = curDNS.diffAppended(lastestDNS); // group appended = {curDNS} - {lastestDNS}
 									if (ga!=null && ga.size()>0) {
 										String sla = MemShard.group2conf(ga);
 										try {
-											memcachedClient.addServer(sla);//失败会重连的，不用考虑中间状态（某些成功加上，某些尚未加上）
+											memcachedClient.addServer(sla); // 失败会重连的，不用考虑中间状态（某些成功加上，某些尚未加上）
 											log.info("append servers ok {}",sla);
 										} catch (IOException e) {
 											log.warn("append servers {} exception",sla, e);
@@ -96,7 +96,7 @@ public class MemCloudClient implements IMemCloudClient {
 										lastestDNS = curDNS;
 									}
 									
-								}// end for if(curDNS != null)
+								} // end for if(curDNS != null)
 								
 								try {
 									int sec = ((lastestDNS!=null && lastestDNS.getTTLSecond() > 0) ? lastestDNS.getTTLSecond() : 3 );
@@ -111,13 +111,13 @@ public class MemCloudClient implements IMemCloudClient {
 							}
 							
 							
-						}//end of while (enableDNSRefresh)
+						} //end of while (enableDNSRefresh)
 					}
-				}, "MemDNSRefresh-"+appid);//定时检测线程名定义为MemDNSRefresh
+				}, "MemDNSRefresh-"+appid); //定时检测线程名定义为MemDNSRefresh
 				
-			}//end of if (memDNSRefreshThread==null)
+			} //end of if (memDNSRefreshThread==null)
 			
-		}//end of synchronized (mutex4Start)
+		} //end of synchronized (mutex4Start)
 		
 		memDNSRefreshThread.start();
 	}
