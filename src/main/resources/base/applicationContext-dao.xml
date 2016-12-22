@@ -25,10 +25,10 @@
     </bean>
     
     
-    <context:component-scan base-package="com.sohu.tv.memcloud.memdns">
+    <context:component-scan base-package="io.memcloud.memdns">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <context:component-scan base-package="com.sohu.tv.memcloud.stats">
+    <context:component-scan base-package="io.memcloud.stats">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -52,7 +52,7 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.sohu.tv.memcloud.memdns.dao.entry"/>
+        <property name="packagesToScan" value="io.memcloud.memdns.dao.entry"/>
         <property name="hibernateProperties">
             <value>
                 hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
@@ -71,18 +71,18 @@
 	<bean id="entityDao" class="io.downgoon.jresty.data.dao.impl.HibernateEntityDaoImpl ">
     </bean>    
 	
-    <bean id="userDao" class="com.sohu.tv.memcloud.memdns.dao.impl.UserDaoImpl" />
-    <bean id="memHostDao" class="com.sohu.tv.memcloud.memdns.dao.impl.MemHostDaoImpl" />
-    <bean id="memInstanceDao" class="com.sohu.tv.memcloud.memdns.dao.impl.MemInstanceDaoImpl" />
-	<bean id="appDescDao" class="com.sohu.tv.memcloud.memdns.dao.impl.AppDescDaoImpl" />
-	<bean id="appConfDao" class="com.sohu.tv.memcloud.memdns.dao.impl.AppConfDaoImpl" />
-	<bean id="appConfAuditDao" class="com.sohu.tv.memcloud.memdns.dao.impl.AppConfAuditDaoImpl" />
-	<bean id="appMemGroupDao" class="com.sohu.tv.memcloud.memdns.dao.impl.AppMemGroupDaoImpl" />
-	<bean id="scaleoutAppealDao" class="com.sohu.tv.memcloud.memdns.dao.impl.ScaleoutAppealDaoImpl" />
+    <bean id="userDao" class="io.memcloud.memdns.dao.impl.UserDaoImpl" />
+    <bean id="memHostDao" class="io.memcloud.memdns.dao.impl.MemHostDaoImpl" />
+    <bean id="memInstanceDao" class="io.memcloud.memdns.dao.impl.MemInstanceDaoImpl" />
+	<bean id="appDescDao" class="io.memcloud.memdns.dao.impl.AppDescDaoImpl" />
+	<bean id="appConfDao" class="io.memcloud.memdns.dao.impl.AppConfDaoImpl" />
+	<bean id="appConfAuditDao" class="io.memcloud.memdns.dao.impl.AppConfAuditDaoImpl" />
+	<bean id="appMemGroupDao" class="io.memcloud.memdns.dao.impl.AppMemGroupDaoImpl" />
+	<bean id="scaleoutAppealDao" class="io.memcloud.memdns.dao.impl.ScaleoutAppealDaoImpl" />
 
-	<bean id="memFaultDao" class="com.sohu.tv.memcloud.stats.dao.impl.MemFaultDaoImpl" />
+	<bean id="memFaultDao" class="io.memcloud.stats.dao.impl.MemFaultDaoImpl" />
 	
-	<bean id="memStatDao" class="com.sohu.tv.memcloud.stats.dao.impl.MemStatDaoImpl">
+	<bean id="memStatDao" class="io.memcloud.stats.dao.impl.MemStatDaoImpl">
 		<property name="instatnceStatManager" ref="instatnceStatManager" />
 	</bean>
     
@@ -90,7 +90,7 @@
 		<property name="servers" value="localhost:11211"/>
 	</bean>
 	
-    <bean id="mongodbFactory" class="com.sohu.tv.memcloud.mongodb.MongodbFactory">
+    <bean id="mongodbFactory" class="io.memcloud.mongodb.MongodbFactory">
         <constructor-arg index="0" value="${mongo.host}"/> 
         <constructor-arg index="1" value="${mongo.port}"/>
         <constructor-arg index="2" value="${mongo.dbname}"/>
@@ -99,9 +99,9 @@
     </bean>
     
     
-    <bean id="instatnceStatManager" class="com.sohu.tv.memcloud.stats.dao.impl.InstanceStatManagerImpl" />
+    <bean id="instatnceStatManager" class="io.memcloud.stats.dao.impl.InstanceStatManagerImpl" />
 	     
-    <bean id="memDNSPublisher" class="com.sohu.tv.memcloud.memdns.business.MemDNSPublisher" />
-    <bean id="memInstanceDirector" class="com.sohu.tv.memcloud.memdns.business.MemInstanceDirector" />
+    <bean id="memDNSPublisher" class="io.memcloud.memdns.business.MemDNSPublisher" />
+    <bean id="memInstanceDirector" class="io.memcloud.memdns.business.MemInstanceDirector" />
     
 </beans>

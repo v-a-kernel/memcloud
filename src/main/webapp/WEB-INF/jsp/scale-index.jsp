@@ -1,7 +1,7 @@
 <%@page import="com.sohu.tv.utils.StatDateType"%>
 <%@page contentType="text/html;charset=UTF-8" %>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,com.sohu.tv.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
+<%@page import="java.util.*,io.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");

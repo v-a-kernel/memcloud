@@ -30,13 +30,13 @@
 		<property name="cacheControlSecond" value="0"/>
 	</bean>
 	
-	<bean name="jsonpHandler" class="com.sohu.tv.memcloud.memdns.util.MyRestrictJSHandler">
+	<bean name="jsonpHandler" class="io.memcloud.memdns.util.MyRestrictJSHandler">
 		<property name="extension" value="jsonp" />
 		<property name="delegate" ref="jsonHandler" />
 		<property name="cacheControlSecond" value="0"/>
 	</bean>
 	
-	<bean name="xmlHandler" class="com.sohu.tv.memcloud.memdns.util.MyUnifiedXmlHandler">
+	<bean name="xmlHandler" class="io.memcloud.memdns.util.MyUnifiedXmlHandler">
 		<property name="cacheControlSecond" value="0"/>
 	</bean>
 	

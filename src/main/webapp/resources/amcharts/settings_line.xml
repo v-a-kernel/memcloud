@@ -55,7 +55,7 @@
   
   <graphs>
     <graph gid="0">
-      <title>昨天</title>
+      <title>鏄ㄥぉ</title>
       <color>0D8ECF</color>
       <color_hover>FF0F00</color_hover>
       <line_width>2</line_width>
@@ -63,7 +63,7 @@
       <bullet>round</bullet>
     </graph>
     <graph gid="1">
-      <title>今天</title>
+      <title>浠婂ぉ</title>
       <color>B0DE09</color>
       <color_hover>FF0F00</color_hover>
       <line_width>2</line_width>
@@ -75,7 +75,7 @@
   
   <labels>
     <label lid="0">
-      <text><![CDATA[<b>登录情况</b>]]></text>
+      <text><![CDATA[<b>鐧诲綍鎯呭喌</b>]]></text>
       <y>15</y>
       <text_size>13</text_size>
       <align>center</align>

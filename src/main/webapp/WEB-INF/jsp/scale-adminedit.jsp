@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,com.sohu.tv.utils.*,com.sohu.tv.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
+<%@page import="java.util.*,com.sohu.tv.utils.*,io.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	

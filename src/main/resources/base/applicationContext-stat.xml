@@ -5,15 +5,15 @@
 	 
 	
 	<!-- DAO -->
-	<bean id="memInstanceMonitor" class="com.sohu.tv.memcloud.stats.business.MemInstanceMonitor" />
-    <bean id="memcachedClientHandler" class="com.sohu.tv.memcloud.stats.business.MemcachedClientHandler" init-method="init"/>
-    <bean id="memStateHander" class="com.sohu.tv.memcloud.stats.business.MemInstanceStateHander" init-method="init"/>
+	<bean id="memInstanceMonitor" class="io.memcloud.stats.business.MemInstanceMonitor" />
+    <bean id="memcachedClientHandler" class="io.memcloud.stats.business.MemcachedClientHandler" init-method="init"/>
+    <bean id="memStateHander" class="io.memcloud.stats.business.MemInstanceStateHander" init-method="init"/>
     
     <!-- Action --> 
-	<bean name="faultReceiveAction" scope="prototype" class="com.sohu.tv.memcloud.stats.action.FaultReceiveAction"
+	<bean name="faultReceiveAction" scope="prototype" class="io.memcloud.stats.action.FaultReceiveAction"
 		parent="baseAction">
 	</bean>
-	<bean name="clientAction" scope="prototype" class="com.sohu.tv.memcloud.stats.action.ClientAction"
+	<bean name="clientAction" scope="prototype" class="io.memcloud.stats.action.ClientAction"
 		parent="baseAction">
 	</bean>
 	
