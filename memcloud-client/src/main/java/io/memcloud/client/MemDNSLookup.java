@@ -68,9 +68,9 @@ public class MemDNSLookup {
 			throw new IllegalStateException("Cond: previous MemDNSLookup version <= current");
 		}
 		if (is4Removed) {
-			return (List<MemShard>)CollectionUtils.subtract(previous.memGroup, this.memGroup);
+			return (List<MemShard>) CollectionUtils.subtract(previous.memGroup, this.memGroup);
 		} else {
-			return (List<MemShard>)CollectionUtils.subtract(this.memGroup, previous.memGroup);
+			return (List<MemShard>) CollectionUtils.subtract(this.memGroup, previous.memGroup);
 		}
 	}
 

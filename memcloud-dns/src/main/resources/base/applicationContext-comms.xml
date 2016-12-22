@@ -12,6 +12,8 @@
 		<constructor-arg index="4" value="UTF-8"/>
 	</bean>
 	
+	
+	<!-- 
     <bean id="httpClient" class="org.apache.commons.httpclient.HttpClient">
         <property name="httpConnectionManager">
             <bean class="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager">
@@ -32,6 +34,8 @@
     <bean id="httpUtil" class="io.memcloud.utils.HttpUtil" init-method="init" scope="singleton">
     	<property name="httpClient"  ref="httpClient" />
     </bean>
+    
+     -->
     	
     
 </beans>
