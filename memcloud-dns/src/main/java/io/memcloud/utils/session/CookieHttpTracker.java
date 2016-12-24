@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.downgoon.jresty.commons.security.URLEncodec;
-import io.memcloud.utils.ClientInfo;
+import io.downgoon.jresty.rest.util.CookieMan;
 import io.memcloud.utils.session.core.IAccount;
 import io.memcloud.utils.session.core.IllegalSessionException;
 import io.memcloud.utils.session.core.SessionAccount;
@@ -31,10 +31,10 @@ public class CookieHttpTracker implements IHttpTracker {
 	public IAccount fetch(HttpServletRequest httpRequest)
 	throws IllegalSessionException 
 	{
-		
-		String uid = ClientInfo.getCookie(httpRequest, PPC_UID);
-		String uname = ClientInfo.getCookie(httpRequest, PPC_NAME);
-		String tokenRemote = ClientInfo.getCookie(httpRequest, PPC_TOKEN);
+		CookieMan cman = new CookieMan(httpRequest);
+		String uid = cman.getCookie(PPC_UID);
+		String uname = cman.getCookie(PPC_NAME);
+		String tokenRemote = cman.getCookie(PPC_TOKEN);
 		
 		if(StringUtils.isEmpty(uid) || StringUtils.isEmpty(uname) || StringUtils.isEmpty(tokenRemote)) {//尚未登录
 			return null;
@@ -77,9 +77,11 @@ public class CookieHttpTracker implements IHttpTracker {
 		if (expireSec == 0) {
 			expireSec = expireDefault;
 		}
-		ClientInfo.setCookie(httpResponse, PPC_TOKEN, token, domainDefault, pathDefault, expireSec);
-		ClientInfo.setCookie(httpResponse, PPC_UID, uid, domainDefault, pathDefault, expireSec);
-		ClientInfo.setCookie(httpResponse, PPC_NAME,uname,domainDefault, pathDefault, expireSec);
+		
+		CookieMan cman = new CookieMan(httpRequest, httpResponse);
+		cman.setCookie(PPC_TOKEN, token, domainDefault, pathDefault, expireSec);
+		cman.setCookie(PPC_UID, uid, domainDefault, pathDefault, expireSec);
+		cman.setCookie(PPC_NAME,uname,domainDefault, pathDefault, expireSec);
 		
 		return token;
 	}
@@ -87,10 +89,11 @@ public class CookieHttpTracker implements IHttpTracker {
 	@Override
 	public void remove(HttpServletRequest httpRequest,
 			HttpServletResponse httpResponse) {
-
-		ClientInfo.removeCookie(httpResponse, PPC_TOKEN, "", domainDefault, pathDefault);
-		ClientInfo.removeCookie(httpResponse, PPC_UID, "", domainDefault, pathDefault);
-		ClientInfo.removeCookie(httpResponse, PPC_NAME, "", domainDefault, pathDefault);
+		
+		CookieMan cman = new CookieMan(httpRequest, httpResponse);
+		cman.removeCookie(PPC_TOKEN, "", domainDefault, pathDefault);
+		cman.removeCookie(PPC_UID, "", domainDefault, pathDefault);
+		cman.removeCookie(PPC_NAME, "", domainDefault, pathDefault);
 		
 	}
 

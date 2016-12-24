@@ -10,7 +10,7 @@ import com.opensymphony.xwork2.ActionInvocation;
 
 import io.downgoon.jresty.commons.utils.DynamicProperties;
 import io.downgoon.jresty.rest.model.UnifiedResponse;
-import io.memcloud.utils.ClientInfo;
+import io.downgoon.jresty.rest.util.IPUtil;
 
 /** 源IP限制授权 */
 public class SrcIPAuthInterceptor extends BaseInterceptor implements API4InternalAccess {
@@ -23,7 +23,7 @@ public class SrcIPAuthInterceptor extends BaseInterceptor implements API4Interna
 	@Override
 	protected String doIntercept(ActionInvocation invocation) throws Exception {
 		HttpServletRequest httpRequest = (HttpServletRequest)ActionContext.getContext().get(StrutsStatics.HTTP_REQUEST);
-		String srcip = ClientInfo.getIpAddr(httpRequest);
+		String srcip = IPUtil.getSrcIP(httpRequest);
 		if(authPassed(srcip)) {
 			return invocation.invoke();
 		} else {
