@@ -7,8 +7,8 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.downgoon.jresty.commons.security.URLEncodec;
 import io.memcloud.utils.ClientInfo;
-import io.memcloud.utils.MD5;
 import io.memcloud.utils.session.core.IAccount;
 import io.memcloud.utils.session.core.IllegalSessionException;
 import io.memcloud.utils.session.core.SessionAccount;
@@ -21,7 +21,7 @@ public class CookieHttpTracker implements IHttpTracker {
 	private static final String pathDefault = "/";
 	private static final int expireDefault = -1;
 	
-	private static final String secureKey = "memdns_cookie_key";
+	private static final String secureKey = "memdns_cookie_key"; // md5 salt
 	
 	static final String PPC_TOKEN = "PPC_TOKEN";
 	static final String PPC_UID = "PPC_UID";
@@ -45,7 +45,8 @@ public class CookieHttpTracker implements IHttpTracker {
 			.append(uname).append("|")
 			.append(secureKey).append("|");
 		
-		String tokenLocal = MD5.MD5Encode(plain.toString()).substring(16, 24);
+		// String tokenLocal = MD5.MD5Encode(plain.toString()).substring(16, 24);
+		String tokenLocal = CastokenCodec.encode(plain.toString());
 		if (! StringUtils.equalsIgnoreCase(tokenRemote, tokenLocal)) {//表示没有登录
 			throw new IllegalSessionException(IllegalSessionException.REASON.ArtificalToken, "remote is "+tokenRemote+",local is "+tokenLocal);
 		}
@@ -62,14 +63,16 @@ public class CookieHttpTracker implements IHttpTracker {
 			HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
 		
 		String uid = account.getUserId()+"";
-		String uname = MD5.urlEncode(account.getScreenName());
+		// String uname = MD5.urlEncode(account.getScreenName());
+		String uname = URLEncodec.encodeUTF8(account.getScreenName());
 		
 		StringBuffer plain = new StringBuffer();
 		plain.append(uid).append("|")
 			.append(uname).append("|")
 			.append(secureKey).append("|");
 		
-		String token = MD5.MD5Encode(plain.toString()).substring(16, 24);
+		// String token = MD5.MD5Encode(plain.toString()).substring(16, 24);
+		String token =  CastokenCodec.encode(plain.toString());
 		
 		if (expireSec == 0) {
 			expireSec = expireDefault;

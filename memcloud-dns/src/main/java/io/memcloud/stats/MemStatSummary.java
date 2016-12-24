@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import io.memcloud.utils.MyUtils;
+import io.memcloud.utils.DateFormator;
 import io.memcloud.utils.StatDateType;
 
 /**
@@ -199,7 +199,7 @@ public class MemStatSummary {
 	}
 	
 	public static String humanSecond(long second) {
-		return MyUtils.humanizedSeconds(second);
+		return DateFormator.humanizedSeconds(second);
 	}
 	
 	public static String humanBytes(double bytes) {
@@ -207,7 +207,7 @@ public class MemStatSummary {
 	}
 	
 	public static String humanBytes(long bytes) {
-		return MyUtils.humanizedBytes(bytes);
+		return DateFormator.humanizedBytes(bytes);
 	}
 	
 	public String getVersion() {

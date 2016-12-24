@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import io.memcloud.memdns.dao.IUserDao;
 import io.memcloud.memdns.dao.entry.User;
-import io.memcloud.utils.MD5;
+import io.memcloud.utils.session.PasswordCodec;
 
 public class UserDaoImplDemo {
 
@@ -15,7 +15,8 @@ public class UserDaoImplDemo {
 		
 		User user = new User();
 		user.setName("weiweili");
-		user.setPwd(MD5.MD5Encode("123456"));
+		
+		user.setPwd(PasswordCodec.encode("123456"));
 //		user.setEmail("");
 		user.setMobile("13810855235");
 		userDao.save(user);

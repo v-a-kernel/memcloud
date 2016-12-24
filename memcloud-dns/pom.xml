@@ -143,6 +143,11 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>io.downgoon</groupId>
+			<artifactId>jresty-security</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>

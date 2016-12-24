@@ -6,8 +6,8 @@ import org.apache.commons.lang.StringUtils;
 
 import io.memcloud.memdns.dao.IUserDao;
 import io.memcloud.memdns.dao.entry.User;
-import io.memcloud.utils.MD5;
 import io.memcloud.utils.session.IHttpTracker;
+import io.memcloud.utils.session.PasswordCodec;
 import io.memcloud.utils.session.core.IAccount;
 import io.memcloud.utils.session.core.IllegalSessionException;
 import io.memcloud.utils.session.core.SessionAccount;
@@ -44,7 +44,8 @@ public class SessionAction extends BaseAction {
 			responseModel.setMessage("user name not found");
 			return REST("session-index");
 		}
-		final String pMD5 = MD5.MD5Encode(p);
+		// final String pMD5 = MD5.MD5Encode(p);
+		final String pMD5 = PasswordCodec.encode(p);
 		if (! StringUtils.equalsIgnoreCase(pMD5, user.getPwd())) {
 			responseModel.setStatus(402);
 			responseModel.setMessage("password mismatch");
