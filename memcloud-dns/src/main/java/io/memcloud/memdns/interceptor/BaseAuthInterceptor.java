@@ -6,11 +6,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionInvocation;
-import io.memcloud.utils.Base64;
-import io.memcloud.utils.DynamicProperties;
 
+import io.downgoon.jresty.commons.security.Base64Codec;
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
+import io.memcloud.utils.DynamicProperties;
 
 /** HTTP_BASE_AUTH 限制 */
 public class BaseAuthInterceptor extends BaseInterceptor implements API4InternalAccess {
@@ -48,7 +48,9 @@ public class BaseAuthInterceptor extends BaseInterceptor implements API4Internal
 			
 		}
 		String authContentBase64 = authArray[1];
-		String authUserAndPwd = new String(Base64.decode(authContentBase64));
+		// String authUserAndPwd = new String(Base64.decode(authContentBase64));
+		String authUserAndPwd = new String(Base64Codec.decode(authContentBase64));
+		
 		if(scopelist==null) {
 			scopelist = "";
 		}
