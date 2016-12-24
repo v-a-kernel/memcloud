@@ -12,15 +12,14 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
 
+import io.downgoon.jresty.commons.utils.DateUtil;
+import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
 import io.memcloud.memdns.action.BaseAction;
 import io.memcloud.memdns.util.CsvMedia;
 import io.memcloud.stats.MemStatSummary;
 import io.memcloud.stats.dao.IInstanceStatManager;
 import io.memcloud.stats.dao.IMemStatDao;
 import io.memcloud.stats.model.StatDBObject;
-import io.memcloud.utils.StatDateType;
-
-import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
 
 public class StatAction extends BaseAction  {
 
@@ -44,15 +43,19 @@ public class StatAction extends BaseAction  {
 		String ip = (String)triple[0];
 		int port = (Integer)triple[1];
 		Date curDate = (Date)triple[2];
-		Date preDate = StatDateType.someDaysAgo(curDate, 1);
+		// Date preDate = StatDateType.someDaysAgo(curDate, 1);
+		
+		Date preDate = DateUtil.someDaysAgo(curDate, 1);
 		
 		Map<String,Object> attachment = new LinkedHashMap<String, Object>();
 		responseModel.setAttachment(attachment);
-		String curDateTxt = StatDateType.format(curDate, "yyyyMMdd");
+		// String curDateTxt = StatDateType.format(curDate, "yyyyMMdd");
+		String curDateTxt = DateUtil.format(curDate, "yyyyMMdd");
 		attachment.put("ip", ip);
 		attachment.put("port", port);
 		attachment.put("curDate", curDateTxt);
-		attachment.put("preDate", StatDateType.format(preDate, "yyyyMMdd"));
+		// attachment.put("preDate", StatDateType.format(preDate, "yyyyMMdd"));
+		attachment.put("preDate", DateUtil.format(preDate, "yyyyMMdd"));
 		MemStatSummary summary = memStatDao.summary(ip, port);
 		if (summary == null) {
 			responseModel.setStatus(402);
@@ -170,13 +173,13 @@ public class StatAction extends BaseAction  {
 		String ip = (String)triple[0];
 		int port = (Integer)triple[1];
 		Date curDate = (Date)triple[2];
-		Date preDate = StatDateType.someDaysAgo(curDate, 1);
+		Date preDate = DateUtil.someDaysAgo(curDate, 1);
 		
 		StringBuffer attachment = new StringBuffer();
 		responseModel.setAttachment(attachment);
 		attachment.append(cmdName+" Command Curve for MemInstance ").append(ip).append(":").append(port).append("\r\n");
 		//时间段；昨天量；今天量
-		attachment.append("Time;").append(StatDateType.format(preDate,"yyyy-MM-dd")).append(";").append(StatDateType.format(curDate,"yyyy-MM-dd")).append("\r\n");
+		attachment.append("Time;").append(DateUtil.format(preDate,"yyyy-MM-dd")).append(";").append(DateUtil.format(curDate,"yyyy-MM-dd")).append("\r\n");
 		
 		LinkedHashMap<String, Long> fPre = memStatDao.trendCmd(ip, port, preDate,cmdType);
 		LinkedHashMap<String, Long> fCur = memStatDao.trendCmd(ip, port, curDate,cmdType);
@@ -254,12 +257,12 @@ public class StatAction extends BaseAction  {
 		//参数3：统计日期
 		Date curDate = null;
 		if (StringUtils.isEmpty(d)) {
-			curDate = StatDateType.todayBegin();
+			curDate = DateUtil.todayBegin();
 		} else {
 			if (d.length() != 8) {//"'d' format 'yyyyMMdd' required, eg. 20120614"
 				return null;
 			} else {
-				curDate = StatDateType.parse(d,"yyyyMMdd");
+				curDate = DateUtil.parse(d,"yyyyMMdd");
 			}
 		}
 		triple[2] = curDate;

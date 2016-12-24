@@ -8,9 +8,9 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 
 import io.downgoon.jresty.commons.security.Base64Codec;
+import io.downgoon.jresty.commons.utils.DynamicProperties;
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
-import io.memcloud.utils.DynamicProperties;
 
 /** HTTP_BASE_AUTH 限制 */
 public class BaseAuthInterceptor extends BaseInterceptor implements API4InternalAccess {

@@ -7,10 +7,10 @@ import org.apache.struts2.StrutsStatics;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import io.memcloud.utils.ClientInfo;
-import io.memcloud.utils.DynamicProperties;
 
+import io.downgoon.jresty.commons.utils.DynamicProperties;
 import io.downgoon.jresty.rest.model.UnifiedResponse;
+import io.memcloud.utils.ClientInfo;
 
 /** 源IP限制授权 */
 public class SrcIPAuthInterceptor extends BaseInterceptor implements API4InternalAccess {

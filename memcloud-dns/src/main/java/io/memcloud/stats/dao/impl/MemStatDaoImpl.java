@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
 
 import com.mongodb.BasicDBObject;
 
+import io.downgoon.jresty.commons.utils.DateUtil;
 import io.memcloud.stats.MemStatSummary;
 import io.memcloud.stats.dao.IInstanceStatManager;
 import io.memcloud.stats.dao.IMemStatDao;
 import io.memcloud.stats.model.Constants;
 import io.memcloud.stats.model.StatDBObject;
-import io.memcloud.utils.StatDateType;
 
 /**
  * cmdType {0:GET,1:SET,2:Hit,3:Mis}
@@ -112,7 +112,7 @@ public class MemStatDaoImpl implements IMemStatDao {
 	public LinkedHashMap<String, Long> trendCmd(String memIP, int memPort,Date statDate, int cmdType) {
 		LinkedHashMap<String, Long> f = new LinkedHashMap<String, Long>();//y=f(x)
 
-		Pattern datePattern = Pattern.compile(StatDateType.format(statDate, "yyyy-MM-dd")+".*", Pattern.CASE_INSENSITIVE);
+		Pattern datePattern = Pattern.compile(DateUtil.format(statDate, "yyyy-MM-dd")+".*", Pattern.CASE_INSENSITIVE);
 		BasicDBObject query = new BasicDBObject();
 		query.put("datetime", datePattern);
 

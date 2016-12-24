@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import io.downgoon.jresty.commons.utils.DynamicProperties;
 import io.memcloud.memdns.dao.IAppDescDao;
 import io.memcloud.memdns.dao.IAppMemGroupDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
@@ -20,7 +21,6 @@ import io.memcloud.memdns.dao.entry.MemFault;
 import io.memcloud.stats.dao.IMemFaultDao;
 import io.memcloud.stats.util.EmailHandler;
 import io.memcloud.stats.util.HttpClientHandler;
-import io.memcloud.utils.DynamicProperties;
 
 /**
  * @author ganghuawang

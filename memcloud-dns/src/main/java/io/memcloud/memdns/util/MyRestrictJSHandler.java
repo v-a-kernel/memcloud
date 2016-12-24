@@ -3,13 +3,11 @@ package io.memcloud.memdns.util;
 import java.io.IOException;
 import java.io.Writer;
 
-import io.downgoon.jresty.rest.view.JSHandler;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-
-import io.memcloud.utils.DynamicProperties;
+import io.downgoon.jresty.commons.utils.DynamicProperties;
+import io.downgoon.jresty.rest.view.JSHandler;
 
 /**
  * JSONP接口进行域名限制控制，对于第三方的域名需要在tv.sohu.com配置白名单才可以访问

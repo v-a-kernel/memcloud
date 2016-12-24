@@ -4,8 +4,8 @@ import java.util.Date;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import io.memcloud.utils.DateFormator;
-import io.memcloud.utils.StatDateType;
+import io.downgoon.jresty.commons.utils.DateUtil;
+import io.downgoon.jresty.commons.utils.HumanizedFormator;
 
 /**
  * REFER:  http://blog.163.com/czg_e/blog/static/46104561201132852042812/ 
@@ -195,11 +195,12 @@ public class MemStatSummary {
 	}
 	
 	public static String prettySecond(long second, String pattern) {
-		return StatDateType.format(new Date(second*1000L),pattern);
+		// return StatDateType.format(new Date(second*1000L),pattern);
+		return DateUtil.format(new Date(second*1000L),pattern);
 	}
 	
 	public static String humanSecond(long second) {
-		return DateFormator.humanizedSeconds(second);
+		return HumanizedFormator.seconds(second);
 	}
 	
 	public static String humanBytes(double bytes) {
@@ -207,7 +208,7 @@ public class MemStatSummary {
 	}
 	
 	public static String humanBytes(long bytes) {
-		return DateFormator.humanizedBytes(bytes);
+		return HumanizedFormator.bytes(bytes);
 	}
 	
 	public String getVersion() {
