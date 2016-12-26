@@ -45,7 +45,6 @@ public class CookieHttpTracker implements IHttpTracker {
 			.append(uname).append("|")
 			.append(secureKey).append("|");
 		
-		// String tokenLocal = MD5.MD5Encode(plain.toString()).substring(16, 24);
 		String tokenLocal = CastokenCodec.encode(plain.toString());
 		if (! StringUtils.equalsIgnoreCase(tokenRemote, tokenLocal)) {//表示没有登录
 			throw new IllegalSessionException(IllegalSessionException.REASON.ArtificalToken, "remote is "+tokenRemote+",local is "+tokenLocal);
@@ -63,7 +62,7 @@ public class CookieHttpTracker implements IHttpTracker {
 			HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
 		
 		String uid = account.getUserId()+"";
-		// String uname = MD5.urlEncode(account.getScreenName());
+
 		String uname = URLEncodec.encodeUTF8(account.getScreenName());
 		
 		StringBuffer plain = new StringBuffer();

@@ -1,7 +1,7 @@
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="io.downgoon.jresty.commons.utils.MD5,io.memcloud.stats.MemStatSummary" %>
-<%@page import="io.downgoon.jresty.commons.utils.*" %>
+<%@page import="io.memcloud.stats.MemStatSummary" %>
+<%@page import="io.downgoon.jresty.commons.utils.*,io.downgoon.jresty.commons.security.*" %>
 <%
 UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
 Map<String,Object> attachment = (Map<String,Object>)up.getAttachment();
@@ -12,7 +12,7 @@ String preDateTxt = (String)attachment.get("preDate");
 String ip = (String)attachment.get("ip");
 Integer port = (Integer)attachment.get("port");
 String ipport = ip+":"+port;
-String ipportUTF8 = MD5.urlEncode(ipport);
+String ipportUTF8 = URLEncodec.encodeUTF8(ipport);
 
 String[] commands = new String[] {"get","set","hit","mis"};
 %>

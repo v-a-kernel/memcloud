@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,io.downgoon.jresty.commons.utils.*" %>
+<%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,io.downgoon.jresty.commons.utils.*,io.downgoon.jresty.commons.security.*" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
@@ -59,7 +59,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 					</p>
 					<p>
 						<label>应用名称：</label>
-						<input name="appName" type="text" class="text-input small-input" id="appName" value="<%=MD5.urlEncode(appDesc.getName()) %>" readonly="readonly" />
+						<input name="appName" type="text" class="text-input small-input" id="appName" value="<%=URLEncodec.encodeUTF8(appDesc.getName()) %>" readonly="readonly" />
 					</p>
 					<p>
 						<label>应用状态：</label>
