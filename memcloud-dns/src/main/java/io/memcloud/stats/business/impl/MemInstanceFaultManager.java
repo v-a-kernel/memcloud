@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.memcloud.stats.business;
+package io.memcloud.stats.business.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -18,6 +18,7 @@ import io.memcloud.memdns.dao.IAppMemGroupDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
 import io.memcloud.memdns.dao.entry.AppMemGroup;
 import io.memcloud.memdns.dao.entry.MemFault;
+import io.memcloud.stats.business.IMemInstanceFaultManager;
 import io.memcloud.stats.dao.IMemFaultDao;
 import io.memcloud.stats.util.EmailHandler;
 import io.memcloud.stats.util.HttpClientHandler;

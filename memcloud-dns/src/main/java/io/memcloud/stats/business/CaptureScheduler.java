@@ -3,140 +3,84 @@
  */
 package io.memcloud.stats.business;
 
-import java.net.InetSocketAddress;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.memcloud.stats.business.impl.MemInstanceConnectionPool;
 import net.rubyeye.xmemcached.MemcachedClient;
-import net.rubyeye.xmemcached.exception.MemcachedException;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
-import io.memcloud.mongodb.MongodbFactory;
-import io.memcloud.stats.model.Constants;
-import io.memcloud.stats.model.StatDBObject;
 
 /**
- * @author ganghuawang
- * 随app一起启动，抓取memcached实例信息
+ * @author ganghuawang 随app一起启动，抓取memcached实例信息
  */
 public class CaptureScheduler {
 
-	private static final Logger log = Logger.getLogger(CaptureScheduler.class);
-	
-	
-	private Map<String, MemcachedClient> clientMap;
-	
-	
-	
+	private static final Logger LOG = LoggerFactory.getLogger(CaptureScheduler.class);
+
+	@Resource(name = "memInstanceMetaFetcher")
+	private IMemInstanceMetaFetcher memInstanceMetaFetcher;
+
 	@Resource(name = "memInstanceConnectionPool")
 	private MemInstanceConnectionPool memInstanceConnectionPool;
-	
-	@Resource(name = "mongodbFactory")
-	private MongodbFactory mongodbFactory;
+
+	@Resource(name = "memInstanceFaultCapture")
+	private MemInstanceFaultCapture memInstanceFaultCapture;
+
+	@Resource(name = "memInstanceStatsCapture")
+	private MemInstanceStatsCapture memInstanceStatsCapture;
 
 	public void start() {
-		// 创建一个任务线程池
-		ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(1);
-		// 每个60s执行一次任务
-		scheduledService.scheduleAtFixedRate(new CaptureWorker(), 5, Constants.TimeUnit.MINUTES.getValue() * 60, TimeUnit.SECONDS);
+
+		List<String> memInstances = memInstanceMetaFetcher.scanMemInstances();
+		for (String instance : memInstances) {
+			int idx = instance.indexOf(":");
+			memInstanceConnectionPool.addClient(instance.substring(0, idx),
+					Integer.parseInt(instance.substring(idx + 1)));
+		}
+
+		startFaultCapture();
+
+		startStatsCapture();
+
 	}
-	
-	
-	/**
-	 * 抓取信息的线程
-	 */
-	class CaptureWorker extends Thread {
-		@Override
-		public void run(){
-			clientMap = memInstanceConnectionPool.getConnectionPool();
-			log.info("get state info,  memcached instances : " + clientMap.size());
-			// 检查创建的索引
-			checkIndexEveryDay();
-			// 遍历所有的memcached实例
-			for(String clientKey : clientMap.keySet()){
-				try {
-					MemcachedClient client = clientMap.get(clientKey);
-					
-					// 对每个客户端执行统计命令
-					Map<InetSocketAddress, Map<String, String>> stats = client.getStats(2000);
-					for(InetSocketAddress add : stats.keySet()) {
-						StatDBObject statDoc = new StatDBObject();
-						Map<String, String> map = stats.get(add);
-						for(String key : map.keySet()){
-							// 如果是数字的话，存为MongoDB数字类型
-							if(StringUtils.isNumeric(map.get(key))){
-								statDoc.put(key, Long.parseLong(map.get(key)));
-							}else {
-								statDoc.put(key, map.get(key));
-							}
-							// 额外存入一个时间，用于统计查询
-							statDoc.put(Constants.DATETIME, getDateStr());
-						}
-						// mongodb集合名
-						String collName = Constants.COLL_PREFIX + add.toString().trim().replace("/", "");
-						log.info(collName);
-						// 存入mongodb
-						mongodbFactory.getDBCollection(collName).insert(statDoc);
-					}
-					
-				} catch (MemcachedException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} catch (TimeoutException e) {
-					e.printStackTrace();
-				}
-			}
+
+	private void startFaultCapture() {
+		Map<String, MemcachedClient> clientPool = memInstanceConnectionPool.getConnectionPool();
+		for (String clientName : clientPool.keySet()) {
+
+			MemcachedClient client = clientPool.get(clientName);
+			client.addStateListener(memInstanceFaultCapture);
+
 		}
 	}
 
-	/**
-	 * 获得日期(yyyy-MM-dd HH:mm:ss)
-	 * @return
-	 */
-	private String getDateStr(){
-		GregorianCalendar gc = new GregorianCalendar();
-		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(gc.getTime());
-	}
-	
-	/**
-	 * 每天检查Mongodb的索引是否创建
-	 */
-	private void checkIndexEveryDay(){
-		String dateStr = new SimpleDateFormat("HH:mm:ss").format(new Date());
-		// 每天凌晨00:30检查一次 
-		if (dateStr.indexOf("00:30") >= 0) {
-			for (String clientKey : clientMap.keySet()) {
-				String collName = Constants.COLL_PREFIX + clientKey;
-				boolean isIndexed = false ;
-				// 查询是否已经创建了索引 
-				List<DBObject> indexs = mongodbFactory.getDBCollection(collName).getIndexInfo();
-				for(DBObject index : indexs){
-					if("datetime_1".equals(index.get("name"))){
-						isIndexed = true ;
-					}
+	private void startStatsCapture() {
+
+		ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(1);
+
+		// 每个60s执行一次任务
+		scheduledService.scheduleAtFixedRate(new Runnable() {
+
+			@Override
+			public void run() {
+				Map<String, MemcachedClient> clientPool = memInstanceConnectionPool.getConnectionPool();
+				LOG.info("get state info,  memcached instances : " + clientPool.size());
+
+				for (String clientName : clientPool.keySet()) {
+					MemcachedClient client = clientPool.get(clientName);
+					memInstanceStatsCapture.stat(client);
 				}
-				// 否则创建索引
-				if(!isIndexed){
-					BasicDBObject indexDoc = new BasicDBObject();
-					indexDoc.put("datetime", 1);
-					mongodbFactory.getDBCollection(collName).createIndex(indexDoc);
-					log.info("create new index, IndexInfo:" + indexDoc);
-				}
+				
 			}
-		}
+
+		}, 5, 60, TimeUnit.SECONDS);
 	}
+
 }

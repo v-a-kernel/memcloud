@@ -10,7 +10,7 @@ import net.rubyeye.xmemcached.MemcachedClientStateListener;
 /**
  *  memcached客户端状态监听实现类
  */
-public class MemInstanceWatchdog implements MemcachedClientStateListener {
+public class MemInstanceFaultCapture implements MemcachedClientStateListener {
 
 	@Resource( name = "memInstanceFaultManager")
 	private IMemInstanceFaultManager memInstanceFaultManager;
@@ -46,5 +46,15 @@ public class MemInstanceWatchdog implements MemcachedClientStateListener {
 	public void onStarted(MemcachedClient arg0) {
 		
 	}
+
+	public IMemInstanceFaultManager getMemInstanceFaultManager() {
+		return memInstanceFaultManager;
+	}
+
+	public void setMemInstanceFaultManager(IMemInstanceFaultManager memInstanceFaultManager) {
+		this.memInstanceFaultManager = memInstanceFaultManager;
+	}
+	
+	
 	
 }
