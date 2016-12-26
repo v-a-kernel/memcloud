@@ -107,5 +107,7 @@
 		<module>memcloud-client</module>
 		<module>memcloud-agent</module>
 		<module>memcloud-cas</module>
+		<module>memcloud-data-dao</module>
+		<module>memcloud-data-mongodb</module>
 	</modules>
 </project>
