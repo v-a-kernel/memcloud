@@ -14,13 +14,9 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-		
-
 		<jetty.version>7.2.0.v20101020</jetty.version>
 		<hibernate.version>3.6.10.Final</hibernate.version>
 		<c3p0.version>0.9.1.2</c3p0.version>
-
 	</properties>
 
 	<profiles>
@@ -57,21 +53,27 @@
 
 		<dependency>
 			<groupId>io.memcloud</groupId>
+			<artifactId>memcloud-alert</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-cas</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-data-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-data-mongodb</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>		
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -116,28 +118,11 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
-		
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>slf4j-api</artifactId>
-					<groupId>org.slf4j</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 
 		<dependency>
 			<groupId>io.downgoon</groupId>
@@ -157,25 +142,10 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		
-
 		<dependency>
 			<groupId>io.downgoon</groupId>
 			<artifactId>jresty-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.1.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>c3p0</groupId>
-			<artifactId>c3p0</artifactId>
-			<version>${c3p0.version}</version>
 		</dependency>
 
 		<!-- commons -->
@@ -196,21 +166,6 @@
 			<artifactId>commons-cli</artifactId>
 			<version>1.2</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-email</artifactId>
-			<version>1.4</version>
-		</dependency>
-
-		<!-- mysql -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.30</version>
-		</dependency>
-
-
 
 
 		<!-- jetty-test -->
