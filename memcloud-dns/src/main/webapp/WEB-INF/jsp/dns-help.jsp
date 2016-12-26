@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,io.memcloud.utils.*,io.memcloud.memdns.dao.entry.*" %>
+<%@page import="java.util.*,io.downgoon.jresty.commons.utils.*,io.memcloud.memdns.dao.entry.*" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	

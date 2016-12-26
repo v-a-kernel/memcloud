@@ -113,7 +113,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 </div><!-- End #main-content-->
 
 <script type="text/javascript">
-	//loadAppRecords(ku6_pagination_firstpage_index,ku6_pagination_page_size);
+	//loadAppRecords(pagination_firstpage_index,pagination_page_size);
 
 	//top.window.ttt=111;
 	

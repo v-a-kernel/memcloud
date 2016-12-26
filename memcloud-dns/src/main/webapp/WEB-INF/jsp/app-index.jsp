@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,io.memcloud.utils.*, io.memcloud.memdns.dao.entry.AppDesc" %>
+<%@page import="java.util.*,io.downgoon.jresty.commons.utils.*, io.memcloud.memdns.dao.entry.AppDesc" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
@@ -92,7 +92,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 									<td><a href="/memcloud/app/<%= app.getId() %>.html"><%= app.getName() %></a></td>
 									<td><a href="/memcloud/group/<%= app.getId() %>.html"><%=shard %>个分片</a></td>
 									<td><%=statusDesc %></td>
-									<td><%=StatDateType.format(app.getCreateTime()) %></td>
+									<td><%=DateUtil.format(app.getCreateTime()) %></td>
 									<td><a href="/memcloud/scale-create/<%= app.getId() %>.html">扩容申请</a></td>
 								</tr>
 						 		<% } %>
@@ -128,7 +128,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 </div><!-- End #main-content-->
 
 <script type="text/javascript">
-	//loadAppRecords(ku6_pagination_firstpage_index,ku6_pagination_page_size);
+	//loadAppRecords(pagination_firstpage_index,pagination_page_size);
 
 	//top.window.ttt=111;
 	

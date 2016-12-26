@@ -195,7 +195,7 @@ public class MemStatSummary {
 	}
 	
 	public static String prettySecond(long second, String pattern) {
-		// return StatDateType.format(new Date(second*1000L),pattern);
+		// return DateUtil.format(new Date(second*1000L),pattern);
 		return DateUtil.format(new Date(second*1000L),pattern);
 	}
 	

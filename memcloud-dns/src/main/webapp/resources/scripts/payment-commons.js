@@ -1,7 +1,7 @@
 /** 前端通用常量配置*/
-var ku6_pagination_firstpage_index = 0;//翻页起始编号（简称：首页编号）（必须大于等于0）
+var pagination_firstpage_index = 0;//翻页起始编号（简称：首页编号）（必须大于等于0）
 var ku6_pagination_span_size = 10;//翻页时页面上最多显示的翻页图标数（简称：跨大小）（必须大于等于1）
-var ku6_pagination_page_size = 10;//翻页时一页最多显示的记录数（简称：页大小）（必须：大于等于1）
+var pagination_page_size = 10;//翻页时一页最多显示的记录数（简称：页大小）（必须：大于等于1）
 
 
 /** 调整iframe的高度，以显示更多记录（当出现遮盖时调用）*/

@@ -5,9 +5,9 @@
  */
 function loadAppRecords(pageNumber,pageSize) {
 
-	var pnumber = ku6_pagination_firstpage_index;
-	var psize = ku6_pagination_page_size;
-	if(pageNumber > ku6_pagination_firstpage_index) {
+	var pnumber = pagination_firstpage_index;
+	var psize = pagination_page_size;
+	if(pageNumber > pagination_firstpage_index) {
 		pnumber = pageNumber;
 	}
 	if(pageSize!=null && pageSize>1) {
@@ -131,13 +131,13 @@ function displayCopyrightProviderPagination(resJSON) {
 	var totalPageCount = resJSON["data"]["totalPage"];//数据库中所含页总数
 	//显示首页链接
 	//<a href="#" title="First Page">&laquo; First</a>
-	if(curPageNum != ku6_pagination_firstpage_index) {
-		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + ku6_pagination_firstpage_index +","+ ku6_pagination_page_size +")", "第一页","&laquo; 第一页",null);
+	if(curPageNum != pagination_firstpage_index) {
+		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + pagination_firstpage_index +","+ pagination_page_size +")", "第一页","&laquo; 第一页",null);
 	}
 	//显示上一页链接
 	//<a href="#" title="PreviousPage">&laquo; Previous</a>
-	if(curPageNum > ku6_pagination_firstpage_index) {
-		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + (curPageNum-1) +","+ ku6_pagination_page_size +")", "上一页","&laquo; 上一页",null);
+	if(curPageNum > pagination_firstpage_index) {
+		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + (curPageNum-1) +","+ pagination_page_size +")", "上一页","&laquo; 上一页",null);
 	}
 	
 	//显示普通按钮翻页按钮（参考google翻页按钮的布局原则：当前页尽可能在中间，左/右侧不够时向不够的那一侧靠拢）
@@ -146,16 +146,16 @@ function displayCopyrightProviderPagination(resJSON) {
 	var endPaginationIndex = (curPageNum + (ku6_pagination_span_size/2 + ku6_pagination_span_size%2));
 	//此时：endPaginationIndex - startPaginationIndex 恒等于 ku6_pagination_span_size
 	//左边缺少的
-	var leftLack = (startPaginationIndex-ku6_pagination_firstpage_index<0 ? ku6_pagination_firstpage_index-startPaginationIndex : 0);
+	var leftLack = (startPaginationIndex-pagination_firstpage_index<0 ? pagination_firstpage_index-startPaginationIndex : 0);
 	//右边缺少的
 	var rightLack = (endPaginationIndex-totalPageCount>0 ? endPaginationIndex-totalPageCount : 0);
-	startPaginationIndex = Math.max(startPaginationIndex-rightLack, ku6_pagination_firstpage_index);//右边缺少的，得在左边补充，但是不得超过左边边界
+	startPaginationIndex = Math.max(startPaginationIndex-rightLack, pagination_firstpage_index);//右边缺少的，得在左边补充，但是不得超过左边边界
 	endPaginationIndex = Math.min(endPaginationIndex+leftLack, totalPageCount);//左边缺少的，得在右边补充，但是不得超过右边边界
 	
 	//<a href="#" class="number" title="1">1</a>
 	//<a href="#" class="number current" title="3">3</a>
 	for(var i=startPaginationIndex; i<endPaginationIndex; i++) {
-		var funCallString = "loadAppRecords(" + i +","+ ku6_pagination_page_size +")";
+		var funCallString = "loadAppRecords(" + i +","+ pagination_page_size +")";
 		var classAttr = "number";//表示普通翻页按钮
 		if(i == curPageNum) {
 			classAttr = "number current";//表示当前页翻页按钮
@@ -165,12 +165,12 @@ function displayCopyrightProviderPagination(resJSON) {
 	//显示下一页链接
 	//<a href="#" title="Next Page">Next &raquo;</a>
 	if(curPageNum<totalPageCount-1) {
-		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + (curPageNum+1) +","+ ku6_pagination_page_size +")", "下一页","下一页 &raquo;",null);
+		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + (curPageNum+1) +","+ pagination_page_size +")", "下一页","下一页 &raquo;",null);
 	}
 	//显示尾页链接
 	//<a href="#" title="LastPage">Last &raquo;</a>
 	if(curPageNum != totalPageCount-1) {
-		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + (totalPageCount-1) +","+ ku6_pagination_page_size +")", "最后页","最后页 &raquo;",null);
+		appendPaginationWithClientEvent(holderid, "loadAppRecords(" + (totalPageCount-1) +","+ pagination_page_size +")", "最后页","最后页 &raquo;",null);
 	}
 	return ;
 }

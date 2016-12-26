@@ -68,14 +68,14 @@ body{ background-color:#f0f0f0; background-image:none;}
 					<% if (appDesc.getCreateTime() != null) { %>
 					<p>
 						<label>申请时间：</label>
-						<input name="creatTime" type="text" class="text-input small-input" id="creatTime" value="<%=StatDateType.format(appDesc.getCreateTime()) %>" readonly="readonly" />
+						<input name="creatTime" type="text" class="text-input small-input" id="creatTime" value="<%=DateUtil.format(appDesc.getCreateTime()) %>" readonly="readonly" />
 					</p>
 					<% } %>
 					
 					<% if (appDesc.getCreateTime()!=null && appDesc.getStatus()!=null && appDesc.getStatus()==1) {%>
 						<p>
 							<label>通过时间：</label>
-							<input name="passedTime" type="text" class="text-input small-input" id="passedTime" value="<%=StatDateType.format(appDesc.getCreateTime()) %>" readonly="readonly" />
+							<input name="passedTime" type="text" class="text-input small-input" id="passedTime" value="<%=DateUtil.format(appDesc.getCreateTime()) %>" readonly="readonly" />
 						</p>
 					<% } %>
 					

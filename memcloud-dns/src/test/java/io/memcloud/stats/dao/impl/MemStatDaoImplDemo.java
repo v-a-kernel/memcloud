@@ -14,7 +14,7 @@ public class MemStatDaoImplDemo {
 		IInstanceStatManager instatnceStatManager = (InstanceStatManagerImpl)factory.getBean("instatnceStatManager");
 		IMemStatDao memStatDao = new MemStatDaoImpl(instatnceStatManager);
 		
-//		LinkedHashMap<String, Long> f = memStatDao.trendGet("10.10.79.214", 11211, StatDateType.todayBegin());
+//		LinkedHashMap<String, Long> f = memStatDao.trendGet("10.10.79.214", 11211, DateUtil.todayBegin());
 //		System.out.println(f);
 		
 		MemStatSummary  s = memStatDao.summary("10.10.79.214", 11211);

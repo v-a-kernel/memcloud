@@ -43,18 +43,18 @@ public class StatAction extends BaseAction  {
 		String ip = (String)triple[0];
 		int port = (Integer)triple[1];
 		Date curDate = (Date)triple[2];
-		// Date preDate = StatDateType.someDaysAgo(curDate, 1);
+		// Date preDate = DateUtil.someDaysAgo(curDate, 1);
 		
 		Date preDate = DateUtil.someDaysAgo(curDate, 1);
 		
 		Map<String,Object> attachment = new LinkedHashMap<String, Object>();
 		responseModel.setAttachment(attachment);
-		// String curDateTxt = StatDateType.format(curDate, "yyyyMMdd");
+		// String curDateTxt = DateUtil.format(curDate, "yyyyMMdd");
 		String curDateTxt = DateUtil.format(curDate, "yyyyMMdd");
 		attachment.put("ip", ip);
 		attachment.put("port", port);
 		attachment.put("curDate", curDateTxt);
-		// attachment.put("preDate", StatDateType.format(preDate, "yyyyMMdd"));
+		// attachment.put("preDate", DateUtil.format(preDate, "yyyyMMdd"));
 		attachment.put("preDate", DateUtil.format(preDate, "yyyyMMdd"));
 		MemStatSummary summary = memStatDao.summary(ip, port);
 		if (summary == null) {
@@ -98,7 +98,7 @@ public class StatAction extends BaseAction  {
 		attachment.put("Data", data);
 		for (int i=1; i<30;i++) {
 			List<Object> item = new ArrayList<Object>();
-//			item.add(StatDateType.format(asd.getStatDate(),"yyyyMMdd"));//日期
+//			item.add(DateUtil.format(asd.getStatDate(),"yyyyMMdd"));//日期
 //			item.add("201206"+String.format("%02d", i));//日期
 			item.add(i);//日期  （日期不是日期格式的虽然能够表现曲线图，但是时间轴不美观）
 //			item.add("-");//指数

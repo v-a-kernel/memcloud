@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,io.memcloud.utils.*,io.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
+<%@page import="java.util.*,io.downgoon.jresty.commons.utils.*,io.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	
@@ -97,7 +97,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 						 	<input type="text" class="text-input small-input" id="userId" name="userId" value="<%=appeal.getUserId()%>" disabled="disabled" /></p>
 												 
             		<p><label>申请时间：</label>
-            		 	<input type="text" class="text-input small-input" id="createTime" name="createTime" value="<%=StatDateType.format(appeal.getCreateTime())%>" disabled="disabled" /></p>
+            		 	<input type="text" class="text-input small-input" id="createTime" name="createTime" value="<%=DateUtil.format(appeal.getCreateTime())%>" disabled="disabled" /></p>
             		 
             		<p><label>申请分片数：</label>
             		 	<input type="text" class="text-input small-input" id="applyShard" name="applyShard" value="<%=appeal.getShardNum()%>" disabled="disabled" /></p>
@@ -129,7 +129,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 						 	<input type="radio" checked="checked" disabled="disabled" /><%=(appeal.getStatus()==ScaleoutAppeal.STATUS_PASSED ? "同意" : "驳回") %>　
 						 </p>
 						<p><label>批复时间：</label>
-				 	 		<input type="text" class="text-input small-input" id="passedTime" name="passedTime" value="<%=StatDateType.format(appeal.getPassedTime())%>" disabled="disabled" />
+				 	 		<input type="text" class="text-input small-input" id="passedTime" name="passedTime" value="<%=DateUtil.format(appeal.getPassedTime())%>" disabled="disabled" />
 				 	 	</p>
 				 	 	
 						<% if (appeal.getStatus()==ScaleoutAppeal.STATUS_PASSED) { %>

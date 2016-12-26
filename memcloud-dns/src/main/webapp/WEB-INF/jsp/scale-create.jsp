@@ -100,7 +100,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 					
 					<% if ( !isRequestPage && !hasErrorInfo && appeal!=null ) { %>
 					<p><label>申请扩容时间：</label>
-					<input type="text" class="text-input small-input" id="createTime" name="createTime" value="<%=StatDateType.format(appeal.getCreateTime())%>" <%=flagReadonly %>/></p>	
+					<input type="text" class="text-input small-input" id="createTime" name="createTime" value="<%=DateUtil.format(appeal.getCreateTime())%>" <%=flagReadonly %>/></p>	
 					<p><label>申请扩容状态：</label>
 					<input type="text" class="text-input small-input" id="status" name="status" value="<%=appeal.getStatus() %>" <%=flagReadonly %>/></p>
 					<% } %>

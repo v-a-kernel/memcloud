@@ -96,7 +96,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 					
 					<% if ( !isRequestPage && !hasErrorInfo && appDesc!=null ) { %>
 					<p><label>创建时间：</label>
-					<input type="text" class="text-input small-input" id="createTime" name="createTime" value="<%=StatDateType.format(appDesc.getCreateTime())%>" <%=flagReadonly %>/></p>	
+					<input type="text" class="text-input small-input" id="createTime" name="createTime" value="<%=DateUtil.format(appDesc.getCreateTime())%>" <%=flagReadonly %>/></p>	
 					<p><label>应用状态：<a href="/memcloud/scale-create/<%= appDesc.getId() %>.html">申请云资源</a></label>
 					<input type="text" class="text-input small-input" id="status" name="status" value="<%=appDesc.getStatus() %>" <%=flagReadonly %>/></p>
 					<% } %>

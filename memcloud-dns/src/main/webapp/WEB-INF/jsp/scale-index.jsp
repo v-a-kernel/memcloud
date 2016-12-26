@@ -91,7 +91,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 									<td><%=statusDesc %></td>
 									<td><%=sa.getShardNum() %></td>
 									<td><%=sa.getMemSize() %>M</td>
-									<td><%=StatDateType.format(sa.getCreateTime()) %></td>
+									<td><%=DateUtil.format(sa.getCreateTime()) %></td>
 									<td align="center">
 									<!-- Icons -->
 									<a href="#" title="Edit"><img src="/resources/images/icons/pencil.png" alt="Edit"/></a>

@@ -87,7 +87,7 @@ body{ background-color:#f0f0f0; background-image:none;}
 									<td><%=statusDesc %></td>
 									<td><%=sa.getShardNum() %></td>
 									<td><%=sa.getMemSize() %>M</td>
-									<td><%=StatDateType.format(sa.getCreateTime()) %></td>
+									<td><%=DateUtil.format(sa.getCreateTime()) %></td>
 									<td align="center">
 									<!-- Icons -->
 									<a href="/memcloud/scale-adminedit/<%=sa.getId() %>.html" title="审批"><img src="/resources/images/icons/pencil.png" alt="审批"/></a>
