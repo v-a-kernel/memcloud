@@ -1,7 +1,7 @@
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="io.memcloud.utils.MD5,io.memcloud.stats.MemStatSummary" %>
-<%@page import="io.memcloud.utils.StatDateType,io.memcloud.utils.MyUtils" %>
+<%@page import="io.downgoon.jresty.commons.utils.MD5,io.memcloud.stats.MemStatSummary" %>
+<%@page import="io.downgoon.jresty.commons.utils.*" %>
 <%
 UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
 Map<String,Object> attachment = (Map<String,Object>)up.getAttachment();
@@ -59,15 +59,15 @@ String[] commands = new String[] {"get","set","hit","mis"};
 		<div class="hits" style="float:left;">
 			<table id="table_info" border="0" cellspacing="0" cellpadding="0">
 				<tbody>
-    				<tr><th>Cache Info & Percentage</th><th>Used: <%=MyUtils.percentFormat(summary.getUsedPercentage()) %>    Hits: <%=MyUtils.percentFormat(summary.getHitPercentage()) %></th></tr>
-    				<tr><td>Current Items(total)</td><td><%=MyUtils.numberFormat(summary.getCurrItems())%> (<%=MyUtils.numberFormat(summary.getTotalItems())%>)</td></tr>
+    				<tr><th>Cache Info & Percentage</th><th>Used: <%=HumanizedFormator.percentFormat(summary.getUsedPercentage()) %>    Hits: <%=HumanizedFormator.percentFormat(summary.getHitPercentage()) %></th></tr>
+    				<tr><td>Current Items(total)</td><td><%=HumanizedFormator.numberFormat(summary.getCurrItems())%> (<%=HumanizedFormator.numberFormat(summary.getTotalItems())%>)</td></tr>
     				<tr><td>Used Cache Size</td><td><%=MemStatSummary.humanBytes(summary.getUsedBytes()) %></td></tr>
     				<tr><td>Free Cache Size</td><td><%=MemStatSummary.humanBytes(summary.getFreeBytes()) %></td></tr>
     				<tr><td>Total Cache Size</td><td><%=MemStatSummary.humanBytes(summary.getTotalBytes()) %></td></tr>
-    				<tr><td>Hits (Rate)</td><td><%=MyUtils.numberFormat(summary.getHitCount())%> (<%=MyUtils.numberFormat(summary.getHitRate())%> req/sec)</td></tr>
-    				<tr><td>Misses (Rate)</td><td><%=MyUtils.numberFormat(summary.getMisCount()) %> (<%=MyUtils.numberFormat(summary.getMisRate())%> req/sec)</td></tr>
-    				<tr><td>Get[Hits+Misses] (Rate)</td><td><%=MyUtils.numberFormat(summary.getGetCount()) %> (<%=MyUtils.numberFormat(summary.getGetRate())%> req/sec)</td></tr>
-    				<tr><td>Set (Rate)</td><td><%=MyUtils.numberFormat(summary.getSetCount()) %> (<%=MyUtils.numberFormat(summary.getSetRate()) %> req/sec)</td></tr>
+    				<tr><td>Hits (Rate)</td><td><%=HumanizedFormator.numberFormat(summary.getHitCount())%> (<%=HumanizedFormator.numberFormat(summary.getHitRate())%> req/sec)</td></tr>
+    				<tr><td>Misses (Rate)</td><td><%=HumanizedFormator.numberFormat(summary.getMisCount()) %> (<%=HumanizedFormator.numberFormat(summary.getMisRate())%> req/sec)</td></tr>
+    				<tr><td>Get[Hits+Misses] (Rate)</td><td><%=HumanizedFormator.numberFormat(summary.getGetCount()) %> (<%=HumanizedFormator.numberFormat(summary.getGetRate())%> req/sec)</td></tr>
+    				<tr><td>Set (Rate)</td><td><%=HumanizedFormator.numberFormat(summary.getSetCount()) %> (<%=HumanizedFormator.numberFormat(summary.getSetRate()) %> req/sec)</td></tr>
 				</tbody>
 			</table>		
 		</div>

@@ -15,7 +15,7 @@
 //import com.opensymphony.xwork2.ActionContext;
 //import com.opensymphony.xwork2.ModelDriven;
 //import io.memcloud.memdns.model.UnifiedResponse;
-//import io.memcloud.utils.MyUtils;
+//import io.downgoon.jresty.commons.utils.MyUtils;
 //
 //import io.downgoon.jresty.rest.struts2.action.UnifiedRestAction;
 //
@@ -60,19 +60,19 @@
 //						
 //						UnifiedResponse up = (UnifiedResponse)((ModelDriven)responseMessageOverwrite).getModel();
 //						if(up.getStatus() > 0) {
-//							redirectURL = MyUtils.appendQS(redirectURL, "status", up.getStatus()+"");
+//							redirectURL = HumanizedFormator.appendQS(redirectURL, "status", up.getStatus()+"");
 //						}
 //						if(up.getMessage() != null) {
-//							redirectURL = MyUtils.appendQS(redirectURL, "message", up.getMessage());
+//							redirectURL = HumanizedFormator.appendQS(redirectURL, "message", up.getMessage());
 //						}
 //						if(up.getAttachment() != null) {
-//							redirectURL = MyUtils.appendQS(redirectURL, "attachment", up.getAttachment().toString());//attachment采用toString方式，方便拓展其他参数
+//							redirectURL = HumanizedFormator.appendQS(redirectURL, "attachment", up.getAttachment().toString());//attachment采用toString方式，方便拓展其他参数
 //						}
 //				} 
 //				//2011-05-12 支持Request.setAttribute方式设置重定向参数
 //				Object redirectAQS = getHttpRequest().getAttribute(REDIRECT_AQS_MAP);
 //				if(redirectAQS!=null && (redirectAQS instanceof Map)) {
-//					redirectURL = MyUtils.appendQS(redirectURL, (Map<String,String>)redirectAQS);
+//					redirectURL = HumanizedFormator.appendQS(redirectURL, (Map<String,String>)redirectAQS);
 //				}
 //			}
 //			

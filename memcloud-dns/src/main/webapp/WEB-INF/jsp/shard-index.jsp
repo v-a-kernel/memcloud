@@ -2,7 +2,7 @@
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
 <%@page import="java.util.*, io.memcloud.memdns.dao.entry.AppMemGroup,io.memcloud.memdns.dao.entry.AppDesc" %>
 <%@page import="io.memcloud.stats.MemStatSummary" %>
-<%@page import="io.memcloud.utils.StatDateType,io.memcloud.utils.MyUtils" %>
+<%@page import="io.downgoon.jresty.commons.utils.*" %>
 
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
@@ -104,8 +104,8 @@ body{ background-color:#f0f0f0; background-image:none;}
 									<td>N<%=(count+1) %></td>
 									<td><a target="_blank" href="/memcloud/stat/<%=masterInst %>.html"><%=masterInst %></a></td>
 									<td>M</td>
-									<td><%=(sm==null? "--" : MyUtils.percentFormat(sm.getUsedPercentage()) ) %></td>
-									<td><%=(sm==null? "--" : MyUtils.percentFormat(sm.getHitPercentage()) ) %></td>
+									<td><%=(sm==null? "--" : HumanizedFormator.percentFormat(sm.getUsedPercentage()) ) %></td>
+									<td><%=(sm==null? "--" : HumanizedFormator.percentFormat(sm.getHitPercentage()) ) %></td>
 									<td><a href="/memcloud/app/<%=appid %>.html"><%=appDesc.getName() %></a></td>
 									<td><a href="/memcloud/group/<%=appid %>.html">集群</a></td>
 									
@@ -115,8 +115,8 @@ body{ background-color:#f0f0f0; background-image:none;}
 									<td>N<%=(count+2) %></td>
 									<td><a target="_blank" href="/memcloud/stat/<%=slaveInst %>.html"><%=slaveInst %></a></td>
 									<td>S</td>
-									<td><%=(ss==null? "--": MyUtils.percentFormat(ss.getUsedPercentage()) ) %></td>
-									<td><%=(ss==null? "--": MyUtils.percentFormat(ss.getHitPercentage()) ) %></td>
+									<td><%=(ss==null? "--": HumanizedFormator.percentFormat(ss.getUsedPercentage()) ) %></td>
+									<td><%=(ss==null? "--": HumanizedFormator.percentFormat(ss.getHitPercentage()) ) %></td>
 									<td><a href="/memcloud/app/<%=appid %>.html"><%=appDesc.getName() %></a></td>
 									<td><a href="/memcloud/group/<%=appid %>.html">集群</a></td>
 								</tr>

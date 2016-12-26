@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,io.memcloud.utils.*" %>
+<%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,io.downgoon.jresty.commons.utils.*" %>
 <%@ include file="/WEB-INF/include/config.jsp"%>
 <%
 	UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");

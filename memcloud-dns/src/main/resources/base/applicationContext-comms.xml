@@ -31,7 +31,7 @@
         </property>
     </bean>
     
-    <bean id="httpUtil" class="io.memcloud.utils.HttpUtil" init-method="init" scope="singleton">
+    <bean id="httpUtil" class="io.downgoon.jresty.commons.utils.HttpUtil" init-method="init" scope="singleton">
     	<property name="httpClient"  ref="httpClient" />
     </bean>
     

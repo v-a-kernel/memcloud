@@ -10,8 +10,8 @@
 //
 //import com.opensymphony.xwork2.ActionContext;
 //import com.opensymphony.xwork2.ActionInvocation;
-//import io.memcloud.utils.DynamicProperties;
-//import io.memcloud.utils.MD5;
+//import io.downgoon.jresty.commons.utils.DynamicProperties;
+//import io.downgoon.jresty.commons.utils.MD5;
 //
 //import io.downgoon.jresty.rest.model.UnifiedResponse;
 //
