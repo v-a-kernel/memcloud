@@ -2,8 +2,6 @@ package io.memcloud.stats;
 
 import java.util.Date;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-
 import io.downgoon.jresty.commons.utils.DateUtil;
 import io.downgoon.jresty.commons.utils.HumanizedFormator;
 
@@ -312,14 +310,21 @@ public class MemStatSummary {
 	 * */
 	
 	
-	@Override
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this).toString();
-	}
+	
 
 	public long getStartTimeSecond() {
 		return this.currTimeSecond - this.uptimeSecond;
 	}
+	
+	@Override
+	public String toString() {
+		return "MemStatSummary [version=" + version + ", uptimeSecond=" + uptimeSecond + ", currTimeSecond="
+				+ currTimeSecond + ", cmd_get=" + cmd_get + ", get_hit=" + get_hit + ", get_mis=" + get_mis
+				+ ", cmd_set=" + cmd_set + ", currItems=" + currItems + ", totalItems=" + totalItems + ", usedBytes="
+				+ usedBytes + ", totalBytes=" + totalBytes + ", currConns=" + currConns + ", totalConns=" + totalConns
+				+ ", readBytes=" + readBytes + ", writeBytes=" + writeBytes + "]";
+	}
+	
 	
 	public long getCurrTimeSecond() {
 		return currTimeSecond;

@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<mongo.version>2.7.3</mongo.version>
+		
 
 		<jetty.version>7.2.0.v20101020</jetty.version>
 		<hibernate.version>3.6.10.Final</hibernate.version>
@@ -60,6 +60,18 @@
 			<artifactId>memcloud-cas</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.memcloud</groupId>
+			<artifactId>memcloud-data-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>io.memcloud</groupId>
+			<artifactId>memcloud-data-mongodb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>		
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -112,11 +124,7 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>${mongo.version}</version>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
