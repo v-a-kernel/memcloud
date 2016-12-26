@@ -6,7 +6,7 @@ package io.memcloud.stats.action;
 import javax.annotation.Resource;
 
 import io.memcloud.memdns.action.BaseAction;
-import io.memcloud.stats.business.IMemcachedClientHandler;
+import io.memcloud.stats.business.IMemInstanceConnectionPool;
 
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
 
@@ -19,7 +19,7 @@ public class ClientAction extends BaseAction {
 	private static final long serialVersionUID = 6823488814069015646L;
 	
 	@Resource(name = "memcachedClientHandler")
-	private IMemcachedClientHandler memcachedClientHandler;
+	private IMemInstanceConnectionPool memcachedClientHandler;
 	
 	/**
 	 * 添加client

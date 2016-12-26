@@ -26,10 +26,10 @@ import io.memcloud.stats.util.HttpClientHandler;
  * @author ganghuawang
  *
  */
-public class MemInstanceMonitor implements IMemInstanceMonitor {
+public class MemInstanceFaultManager implements IMemInstanceFaultManager {
 
 	
-	private static final Logger log = Logger.getLogger(MemInstanceMonitor.class);
+	private static final Logger log = Logger.getLogger(MemInstanceFaultManager.class);
 	private static int DEFAULT_FAULT_TIMES = 3;	//可配置(fault.times)
 	private static int DEFAULT_EXPIRES_TIME = 600;  //可配置(alarm.expires)
 	private static boolean ischeck = false ;
@@ -50,7 +50,7 @@ public class MemInstanceMonitor implements IMemInstanceMonitor {
 	private IAppMemGroupDao appMemGroupDao;
 	
 	
-	public MemInstanceMonitor(){
+	public MemInstanceFaultManager(){
 		if(StringUtils.isNotEmpty(DynamicProperties.getDefaultInstance().getProperty("fault.times")))
 			DEFAULT_FAULT_TIMES = Integer.valueOf(DynamicProperties.getDefaultInstance().getProperty("fault.times"));
 		if(StringUtils.isNotEmpty(DynamicProperties.getDefaultInstance().getProperty("alarm.expires")))
@@ -119,6 +119,7 @@ public class MemInstanceMonitor implements IMemInstanceMonitor {
 			// 报警的时长间隔
 			if(faultResult.get(key+"_time") == null){
 				faultResult.put(key + "_time", System.currentTimeMillis());
+				
 			}else {
 				Long time = faultResult.get(key+"_time");
 				if((System.currentTimeMillis()-time)/1000 > DEFAULT_EXPIRES_TIME){  //默认10分钟
@@ -160,7 +161,7 @@ public class MemInstanceMonitor implements IMemInstanceMonitor {
 					for (String mobile : appDesc.getNotifyMobiles().split(",")) {
 						log.info("send mobile notify : mobile number = " + mobile + " message=" + textMessage);
 						String sns_url = sns_url_template.replace("$mobile", mobile).replace("$message",textMessage);
-						HttpClientHandler.notifyGetPage(sns_url);
+						HttpClientHandler.notifyGetPage(sns_url);  // 发送短信
 					}
 				}
 			}

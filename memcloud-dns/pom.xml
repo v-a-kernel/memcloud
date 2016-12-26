@@ -292,7 +292,7 @@
 					</includes>
 					<excludes>
 						<exclude>**/TestInstanceStatManager.java</exclude>
-						<exclude>**/TestMemInstanceMonitor.java</exclude>
+						<exclude>**/TestMemInstanceFaultManager.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

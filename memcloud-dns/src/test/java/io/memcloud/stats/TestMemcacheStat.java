@@ -68,7 +68,7 @@ public class TestMemcacheStat {
 //		List<DBObject> indexs = coll.getIndexInfo();
 //		System.out.println(indexs);
 		
-//		List<MemcachedClusterClient> clientlist = MemcachedClientManager.getInstance().getClusterClient();
+//		List<MemcachedClusterClient> clientlist = memInstanceConnectionPool.getInstance().getClusterClient();
 //		for (MemcachedClusterClient memcachedClusterClient : clientlist) {
 //			MemcachedClient mc = memcachedClusterClient.getMemcachedClient();
 //			new GatherThread(mc).start();

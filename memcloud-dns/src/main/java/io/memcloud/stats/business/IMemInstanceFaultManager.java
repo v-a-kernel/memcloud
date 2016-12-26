@@ -1,7 +1,7 @@
 package io.memcloud.stats.business;
 
 
-public interface IMemInstanceMonitor {
+public interface IMemInstanceFaultManager {
 
 	/** 发送故障消息 */
 	public void sendFaultMessage(String host, Integer port);

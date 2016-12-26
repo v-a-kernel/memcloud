@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.mongodb.BasicDBObject;
 import io.memcloud.memdns.dao.IAppMemGroupDao;
-import io.memcloud.stats.business.IMemInstanceMonitor;
+import io.memcloud.stats.business.IMemInstanceFaultManager;
 import io.memcloud.stats.dao.IInstanceStatManager;
 import io.memcloud.stats.dao.impl.InstanceStatManagerImpl;
 import io.memcloud.stats.model.Constants;
@@ -22,22 +22,22 @@ public class TestInstanceStatManager {
 
 	public IInstanceStatManager stat ;
 	private IAppMemGroupDao appMemGroupDao;
-	private IMemInstanceMonitor memInstanceMonitor;
+	private IMemInstanceFaultManager memInstanceFaultManager;
 	
 	@Before
 	public void setUp() throws Exception {
 		ApplicationContext factory = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 		stat = (InstanceStatManagerImpl)factory.getBean("instatnceStatManager");
 		appMemGroupDao = (IAppMemGroupDao)factory.getBean("appMemGroupDao");
-		memInstanceMonitor = (IMemInstanceMonitor)factory.getBean("memInstanceMonitor");
+		memInstanceFaultManager = (IMemInstanceFaultManager)factory.getBean("memInstanceFaultManager");
 	}
 	
 	@Test
 	public void fault(){
-		memInstanceMonitor.receiveFaultMessage(10L);
-//		memInstanceMonitor.sendFaultMessage("10.10.83.177", 12101);
-//		memInstanceMonitor.sendFaultMessage("10.10.83.177", 12101);
-//		memInstanceMonitor.sendFaultMessage("10.10.83.177", 12101);
+		memInstanceFaultManager.receiveFaultMessage(10L);
+//		memInstanceFaultManager.sendFaultMessage("10.10.83.177", 12101);
+//		memInstanceFaultManager.sendFaultMessage("10.10.83.177", 12101);
+//		memInstanceFaultManager.sendFaultMessage("10.10.83.177", 12101);
 	}
 	
 //	@Test

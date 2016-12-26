@@ -32,39 +32,47 @@ import io.memcloud.stats.model.StatDBObject;
  * @author ganghuawang
  * 随app一起启动，抓取memcached实例信息
  */
-public class MemInstanceStateHander {
+public class CaptureScheduler {
 
-	private static final Logger log = Logger.getLogger(MemInstanceStateHander.class);
-	private Map<String, MemcachedClient> clientList;
-	@Resource(name = "memcachedClientHandler")
-	private MemcachedClientHandler memcachedClientHandler;
+	private static final Logger log = Logger.getLogger(CaptureScheduler.class);
+	
+	
+	private Map<String, MemcachedClient> clientMap;
+	
+	
+	
+	@Resource(name = "memInstanceConnectionPool")
+	private MemInstanceConnectionPool memInstanceConnectionPool;
 	
 	@Resource(name = "mongodbFactory")
 	private MongodbFactory mongodbFactory;
 
-	public void init() {
+	public void start() {
 		// 创建一个任务线程池
 		ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(1);
 		// 每个60s执行一次任务
-		scheduledService.scheduleAtFixedRate(new GatherStateTread(), 5, Constants.TimeUnit.MINUTES.getValue() * 60, TimeUnit.SECONDS);
+		scheduledService.scheduleAtFixedRate(new CaptureWorker(), 5, Constants.TimeUnit.MINUTES.getValue() * 60, TimeUnit.SECONDS);
 	}
+	
 	
 	/**
 	 * 抓取信息的线程
 	 */
-	class GatherStateTread extends Thread{
+	class CaptureWorker extends Thread {
 		@Override
 		public void run(){
-			clientList = memcachedClientHandler.getClientList();
-			log.info("get state info,  memcached instances : " + clientList.size());
+			clientMap = memInstanceConnectionPool.getConnectionPool();
+			log.info("get state info,  memcached instances : " + clientMap.size());
 			// 检查创建的索引
 			checkIndexEveryDay();
 			// 遍历所有的memcached实例
-			for(String clientKey : clientList.keySet()){
+			for(String clientKey : clientMap.keySet()){
 				try {
-					MemcachedClient client = clientList.get(clientKey);
+					MemcachedClient client = clientMap.get(clientKey);
+					
+					// 对每个客户端执行统计命令
 					Map<InetSocketAddress, Map<String, String>> stats = client.getStats(2000);
-					for(InetSocketAddress add : stats.keySet()){
+					for(InetSocketAddress add : stats.keySet()) {
 						StatDBObject statDoc = new StatDBObject();
 						Map<String, String> map = stats.get(add);
 						for(String key : map.keySet()){
@@ -83,6 +91,7 @@ public class MemInstanceStateHander {
 						// 存入mongodb
 						mongodbFactory.getDBCollection(collName).insert(statDoc);
 					}
+					
 				} catch (MemcachedException e) {
 					e.printStackTrace();
 				} catch (InterruptedException e) {
@@ -110,7 +119,7 @@ public class MemInstanceStateHander {
 		String dateStr = new SimpleDateFormat("HH:mm:ss").format(new Date());
 		// 每天凌晨00:30检查一次 
 		if (dateStr.indexOf("00:30") >= 0) {
-			for (String clientKey : clientList.keySet()) {
+			for (String clientKey : clientMap.keySet()) {
 				String collName = Constants.COLL_PREFIX + clientKey;
 				boolean isIndexed = false ;
 				// 查询是否已经创建了索引 

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import net.rubyeye.xmemcached.MemcachedClient;
 
-public interface IMemcachedClientHandler {
+public interface IMemInstanceConnectionPool {
 
 	/**
 	 * 初始化所有的客户端
@@ -25,5 +25,7 @@ public interface IMemcachedClientHandler {
 	 */
 	public void addClient(String host, int port);
 	
-	public Map<String, MemcachedClient> getClientList();
+	
+	public Map<String, MemcachedClient> getConnectionPool();
+	
 }

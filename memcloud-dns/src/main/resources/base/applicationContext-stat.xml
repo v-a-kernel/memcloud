@@ -5,9 +5,13 @@
 	 
 	
 	<!-- DAO -->
-	<bean id="memInstanceMonitor" class="io.memcloud.stats.business.MemInstanceMonitor" />
-    <bean id="memcachedClientHandler" class="io.memcloud.stats.business.MemcachedClientHandler" init-method="init"/>
-    <bean id="memStateHander" class="io.memcloud.stats.business.MemInstanceStateHander" init-method="init"/>
+	<bean id="memInstanceFaultManager" class="io.memcloud.stats.business.MemInstanceFaultManager" />
+    
+    
+    <bean id="memInstanceConnectionPool" class="io.memcloud.stats.business.MemInstanceConnectionPool" init-method="init"/>
+    
+    
+    <bean id="memStateHander" class="io.memcloud.stats.business.CaptureScheduler" init-method="start"/>
     
     <!-- Action --> 
 	<bean name="faultReceiveAction" scope="prototype" class="io.memcloud.stats.action.FaultReceiveAction"
