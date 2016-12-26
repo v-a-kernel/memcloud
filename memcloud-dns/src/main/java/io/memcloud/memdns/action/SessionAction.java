@@ -6,11 +6,11 @@ import org.apache.commons.lang.StringUtils;
 
 import io.memcloud.memdns.dao.IUserDao;
 import io.memcloud.memdns.dao.entry.User;
-import io.memcloud.utils.session.IHttpTracker;
-import io.memcloud.utils.session.PasswordCodec;
-import io.memcloud.utils.session.core.IAccount;
-import io.memcloud.utils.session.core.IllegalSessionException;
-import io.memcloud.utils.session.core.SessionAccount;
+import io.memcloud.cas.session.IHttpTracker;
+import io.memcloud.cas.session.PasswordCodec;
+import io.memcloud.cas.session.core.IAccount;
+import io.memcloud.cas.session.core.IllegalSessionException;
+import io.memcloud.cas.session.core.SessionAccount;
 
 public class SessionAction extends BaseAction {
 

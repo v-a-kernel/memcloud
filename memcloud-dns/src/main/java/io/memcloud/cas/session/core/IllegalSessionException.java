@@ -1,4 +1,4 @@
-package io.memcloud.utils.session.core;
+package io.memcloud.cas.session.core;
 
 
 /**

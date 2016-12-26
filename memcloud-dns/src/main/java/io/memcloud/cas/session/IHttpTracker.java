@@ -1,10 +1,10 @@
-package io.memcloud.utils.session;
+package io.memcloud.cas.session;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import io.memcloud.utils.session.core.IAccount;
-import io.memcloud.utils.session.readonly.IHttpTrackerReadonly;
+import io.memcloud.cas.session.core.IAccount;
+import io.memcloud.cas.session.readonly.IHttpTrackerReadonly;
 
 public interface IHttpTracker extends IHttpTrackerReadonly {
 

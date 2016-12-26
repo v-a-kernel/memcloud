@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import io.memcloud.memdns.dao.IUserDao;
 import io.memcloud.memdns.dao.entry.User;
-import io.memcloud.utils.session.core.IAccount;
+import io.memcloud.cas.session.core.IAccount;
 
 public class UserAction extends BaseAction {
 

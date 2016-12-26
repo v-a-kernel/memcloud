@@ -1,4 +1,4 @@
-package io.memcloud.utils.session;
+package io.memcloud.cas.session;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 
 import io.downgoon.jresty.commons.security.URLEncodec;
 import io.downgoon.jresty.rest.util.CookieMan;
-import io.memcloud.utils.session.core.IAccount;
-import io.memcloud.utils.session.core.IllegalSessionException;
-import io.memcloud.utils.session.core.SessionAccount;
+import io.memcloud.cas.session.core.IAccount;
+import io.memcloud.cas.session.core.IllegalSessionException;
+import io.memcloud.cas.session.core.SessionAccount;
 
 public class CookieHttpTracker implements IHttpTracker {
 

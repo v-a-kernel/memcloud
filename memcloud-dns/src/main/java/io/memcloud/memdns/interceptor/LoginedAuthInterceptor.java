@@ -6,9 +6,9 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import io.memcloud.utils.session.IHttpTracker;
-import io.memcloud.utils.session.core.IAccount;
-import io.memcloud.utils.session.core.IllegalSessionException;
+import io.memcloud.cas.session.IHttpTracker;
+import io.memcloud.cas.session.core.IAccount;
+import io.memcloud.cas.session.core.IllegalSessionException;
 
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 
