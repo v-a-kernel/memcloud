@@ -3,9 +3,9 @@ package io.memcloud.memdns.dao.impl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import io.memcloud.cas.session.PasswordCodec;
 import io.memcloud.memdns.dao.IUserDao;
 import io.memcloud.memdns.dao.entry.User;
-import io.memcloud.cas.session.PasswordCodec;
 
 public class UserDaoImplDemo {
 

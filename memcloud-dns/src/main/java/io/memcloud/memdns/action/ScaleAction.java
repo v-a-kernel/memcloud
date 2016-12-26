@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
 
+import io.memcloud.cas.IAccount;
 import io.memcloud.memdns.business.IMemInstanceDirector;
 import io.memcloud.memdns.dao.ConcurrencyProblemException;
 import io.memcloud.memdns.dao.IAppDescDao;
@@ -15,7 +16,6 @@ import io.memcloud.memdns.dao.IScaleoutAppealDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
 import io.memcloud.memdns.dao.entry.AppMemGroup;
 import io.memcloud.memdns.dao.entry.ScaleoutAppeal;
-import io.memcloud.cas.session.core.IAccount;
 
 public class ScaleAction extends BaseAction {
 

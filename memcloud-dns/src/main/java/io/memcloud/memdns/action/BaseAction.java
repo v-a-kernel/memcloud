@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.opensymphony.xwork2.ActionContext;
-import io.memcloud.memdns.model.Constants;
-import io.memcloud.cas.session.core.IAccount;
 
+import io.memcloud.cas.IAccount;
+import io.memcloud.memdns.model.Constants;
 import io.downgoon.jresty.rest.struts2.action.UnifiedRestAction;
 
 public class BaseAction extends UnifiedRestAction implements Constants {

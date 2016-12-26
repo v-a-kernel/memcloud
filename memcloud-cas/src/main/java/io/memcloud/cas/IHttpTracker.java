@@ -1,13 +1,13 @@
-package io.memcloud.cas.session;
+package io.memcloud.cas;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import io.memcloud.cas.session.core.IAccount;
-import io.memcloud.cas.session.readonly.IHttpTrackerReadonly;
+public interface IHttpTracker  {
 
-public interface IHttpTracker extends IHttpTrackerReadonly {
-
+	public IAccount fetch(HttpServletRequest httpRequest)
+			throws IllegalSessionException;
+	
 	public String save(IAccount account,int expireSec,HttpServletRequest httpRequest,HttpServletResponse httpResponse);
 	
 	public void remove(HttpServletRequest httpRequest,HttpServletResponse httpResponse);

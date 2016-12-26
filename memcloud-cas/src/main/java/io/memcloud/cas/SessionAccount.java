@@ -1,4 +1,4 @@
-package io.memcloud.cas.session.core;
+package io.memcloud.cas;
 
 import java.util.HashMap;
 import java.util.Map;

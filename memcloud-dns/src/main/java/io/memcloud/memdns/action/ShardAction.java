@@ -7,13 +7,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import io.memcloud.cas.IAccount;
 import io.memcloud.memdns.dao.IAppDescDao;
 import io.memcloud.memdns.dao.IAppMemGroupDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
 import io.memcloud.memdns.dao.entry.AppMemGroup;
 import io.memcloud.stats.MemStatSummary;
 import io.memcloud.stats.dao.IMemStatDao;
-import io.memcloud.cas.session.core.IAccount;
 
 /**
  * 我的监控->全部实例（把所有应用的分片情况都列表出来）
