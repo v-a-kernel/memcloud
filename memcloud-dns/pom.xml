@@ -11,6 +11,8 @@
 
 	<artifactId>memcloud-dns</artifactId>
 	<name>memcloud-dns</name>
+	<packaging>war</packaging>
+	
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,35 +21,6 @@
 		<c3p0.version>0.9.1.2</c3p0.version>
 	</properties>
 
-	<profiles>
-		<profile>
-			<id>rd</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile>rd</build.profile>
-			</properties>
-		</profile>
-		<profile>
-			<id>qa</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile>qa</build.profile>
-			</properties>
-		</profile>
-		<profile>
-			<id>op</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile>op</build.profile>
-			</properties>
-		</profile>
-	</profiles>
 
 	<dependencies>
 
@@ -72,6 +45,12 @@
 		<dependency>
 			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-data-mongodb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.memcloud</groupId>
+			<artifactId>memcloud-conf</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -263,14 +242,7 @@
 
 		</plugins>
 
-		<resources>
-			<resource>
-				<directory>src/main/resources/${build.profile}</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources/base</directory>
-			</resource>
-		</resources>
+		
 	</build>
 
 </project>
