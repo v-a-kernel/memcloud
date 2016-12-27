@@ -15,55 +15,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<profiles>
-		<profile>
-			<id>rd</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile>rd</build.profile>
-			</properties>
-		</profile>
-		<profile>
-			<id>qa</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile>qa</build.profile>
-			</properties>
-		</profile>
-		<profile>
-			<id>op</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<build.profile>op</build.profile>
-			</properties>
-		</profile>
-	</profiles>
-
+	
 
 	<dependencies>
 
-
 	</dependencies>
-
-
-	<build>
-
-		<resources>
-			<resource>
-				<directory>src/main/resources/${build.profile}</directory>
-			</resource>
-			<resource>
-				<directory>src/main/resources/base</directory>
-			</resource>
-		</resources>
-	</build>
-
 
 
 </project>

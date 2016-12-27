@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.memcloud</groupId>
 	<artifactId>memcloud</artifactId>
@@ -13,6 +14,36 @@
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<slf4j.version>1.7.7</slf4j.version>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>rd</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<build.profile>rd</build.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>qa</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<build.profile>qa</build.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>op</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<build.profile>op</build.profile>
+			</properties>
+		</profile>
+	</profiles>
 
 	<dependencies>
 
@@ -99,6 +130,15 @@
 
 		</plugins>
 
+		<resources>
+			<resource>
+				<directory>src/main/resources/${build.profile}</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources/base</directory>
+			</resource>
+		</resources>
+
 	</build>
 
 	<modules>
@@ -108,7 +148,7 @@
 		<module>memcloud-cas</module>
 		<module>memcloud-data-dao</module>
 		<module>memcloud-data-mongodb</module>
-    <module>memcloud-alert</module>
-    <module>memcloud-conf</module>
-  </modules>
+		<module>memcloud-alert</module>
+		<module>memcloud-conf</module>
+	</modules>
 </project>

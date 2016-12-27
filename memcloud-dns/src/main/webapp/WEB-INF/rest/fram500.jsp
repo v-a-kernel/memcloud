@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="io.downgoon.passport.model.UnifiedResponse,io.downgoon.passport.model.UnifiedResponseCode" %>
-<%@ include file="../config.jsp"%>
+<%@ include file="../conf.jsp"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%

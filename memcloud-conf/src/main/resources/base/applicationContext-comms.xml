@@ -12,30 +12,4 @@
 		<constructor-arg index="4" value="UTF-8"/>
 	</bean>
 	
-	
-	<!-- 
-    <bean id="httpClient" class="org.apache.commons.httpclient.HttpClient">
-        <property name="httpConnectionManager">
-            <bean class="org.apache.commons.httpclient.MultiThreadedHttpConnectionManager">
-                <property name="params">
-                    <bean class="org.apache.commons.httpclient.params.HttpConnectionManagerParams">
-                        <property name="connectionTimeout" value="30000"/>
-                        <property name="soTimeout" value="180000"/>
-                        <property name="defaultMaxConnectionsPerHost" value="1024"/>
-                        <property name="maxTotalConnections" value="2048"/>
-                        <property name="receiveBufferSize" value="4096"/>
-                        <property name="sendBufferSize" value="4096"/>
-                    </bean>
-                </property>
-            </bean>
-        </property>
-    </bean>
-    
-    <bean id="httpUtil" class="io.downgoon.jresty.commons.utils.HttpUtil" init-method="init" scope="singleton">
-    	<property name="httpClient"  ref="httpClient" />
-    </bean>
-    
-     -->
-    	
-    
 </beans>

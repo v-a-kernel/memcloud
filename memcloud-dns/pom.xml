@@ -40,13 +40,26 @@
 			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-data-dao</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>memcloud-conf</artifactId>
+					<groupId>io.memcloud</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-data-mongodb</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>memcloud-conf</artifactId>
+					<groupId>io.memcloud</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+		
 		
 		<dependency>
 			<groupId>io.memcloud</groupId>

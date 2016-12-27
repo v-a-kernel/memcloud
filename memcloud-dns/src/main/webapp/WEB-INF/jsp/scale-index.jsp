@@ -2,7 +2,7 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
 <%@page import="java.util.*,io.memcloud.memdns.dao.entry.ScaleoutAppeal" %>
-<%@ include file="/WEB-INF/include/config.jsp"%>
+<%@ include file="../conf.jsp"%>
 <%
 	UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
 	List<ScaleoutAppeal> saList = (List<ScaleoutAppeal>)up.getAttachment();

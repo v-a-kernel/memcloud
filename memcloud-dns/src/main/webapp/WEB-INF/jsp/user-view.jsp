@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
 <%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,io.memcloud.memdns.dao.entry.User" %>
-<%@ include file="/WEB-INF/include/config.jsp"%>
+<%@ include file="../conf.jsp"%>
 <%
 	UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");
 	Map<String,Object> attachment = (Map<String,Object>)up.getAttachment();

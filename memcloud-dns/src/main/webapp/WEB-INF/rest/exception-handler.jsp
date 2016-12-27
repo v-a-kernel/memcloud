@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@ include file="/WEB-INF/include/config.jsp"%>
+<%@ include file="../conf.jsp"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <%

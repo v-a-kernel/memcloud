@@ -4,7 +4,7 @@
 <%@page import="io.memcloud.stats.MemStatSummary" %>
 <%@page import="io.downgoon.jresty.commons.utils.*" %>
 
-<%@ include file="/WEB-INF/include/config.jsp"%>
+<%@ include file="../conf.jsp"%>
 <%
     boolean isArgErr = false;//输入参数错误
     UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");

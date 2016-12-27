@@ -14,12 +14,13 @@
 
     <context:annotation-config/>
 
-	<bean id="propertyConfigurer"
+	<bean id="propertyConfigurerJdbc"
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
         <property name="locations">
         	<list> 
 	        	<value>classpath:jdbc.properties</value>
-	        	<value>classpath:mongo.properties</value>
         	</list>
         </property>
     </bean>
@@ -80,26 +81,15 @@
 	<bean id="appMemGroupDao" class="io.memcloud.memdns.dao.impl.AppMemGroupDaoImpl" />
 	<bean id="scaleoutAppealDao" class="io.memcloud.memdns.dao.impl.ScaleoutAppealDaoImpl" />
 
+
 	<bean id="memFaultDao" class="io.memcloud.stats.dao.impl.MemFaultDaoImpl" />
 	
-	<bean id="memStatDao" class="io.memcloud.stats.dao.impl.MemStatDaoImpl">
-		<property name="instatnceStatManager" ref="instatnceStatManager" />
-	</bean>
-    
-    <bean id="memcachedClient_master" class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean" >
-		<property name="servers" value="localhost:11211"/>
-	</bean>
 	
-    <bean id="mongodbFactory" class="io.memcloud.mongodb.MongodbFactory">
-        <constructor-arg index="0" value="${mongo.host}"/> 
-        <constructor-arg index="1" value="${mongo.port}"/>
-        <constructor-arg index="2" value="${mongo.dbname}"/>
-        <constructor-arg index="3" value="${mongo.username}"/>
-        <constructor-arg index="4" value="${mongo.password}"/>
-    </bean>
+	
+	
+	
     
     
-    <bean id="instatnceStatManager" class="io.memcloud.stats.dao.impl.InstanceStatManagerImpl" />
 	     
     <bean id="memDNSPublisher" class="io.memcloud.memdns.business.MemDNSPublisher" />
     <bean id="memInstanceDirector" class="io.memcloud.memdns.business.MemInstanceDirector" />
