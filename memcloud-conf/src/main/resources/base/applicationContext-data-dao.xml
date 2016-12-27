@@ -84,14 +84,4 @@
 
 	<bean id="memFaultDao" class="io.memcloud.stats.dao.impl.MemFaultDaoImpl" />
 	
-	
-	
-	
-	
-    
-    
-	     
-    <bean id="memDNSPublisher" class="io.memcloud.memdns.business.MemDNSPublisher" />
-    <bean id="memInstanceDirector" class="io.memcloud.memdns.business.MemInstanceDirector" />
-    
 </beans>

@@ -8,11 +8,14 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import io.memcloud.stats.business.impl.MemInstanceConnectionPool;
 import net.rubyeye.xmemcached.MemcachedClient;
@@ -36,18 +39,23 @@ public class CaptureScheduler {
 	@Resource(name = "memInstanceStatsCapture")
 	private MemInstanceStatsCapture memInstanceStatsCapture;
 
+	private AtomicBoolean started = new AtomicBoolean(false);
+
 	public void start() {
 
-		List<String> memInstances = memInstanceMetaFetcher.scanMemInstances();
-		for (String instance : memInstances) {
-			int idx = instance.indexOf(":");
-			memInstanceConnectionPool.addClient(instance.substring(0, idx),
-					Integer.parseInt(instance.substring(idx + 1)));
+		if (started.compareAndSet(false, true)) {
+
+			List<String> memInstances = memInstanceMetaFetcher.scanMemInstances();
+			for (String instance : memInstances) {
+				int idx = instance.indexOf(":");
+				memInstanceConnectionPool.addClient(instance.substring(0, idx),
+						Integer.parseInt(instance.substring(idx + 1)));
+			}
+
+			startFaultCapture();
+
+			startStatsCapture();
 		}
-
-		startFaultCapture();
-
-		startStatsCapture();
 
 	}
 
@@ -77,10 +85,27 @@ public class CaptureScheduler {
 					MemcachedClient client = clientPool.get(clientName);
 					memInstanceStatsCapture.stat(client);
 				}
-				
+
 			}
 
 		}, 5, 60, TimeUnit.SECONDS);
+	}
+
+	public boolean hasStarted() {
+		return started.get();
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		ApplicationContext factory = new ClassPathXmlApplicationContext(
+				"classpath:applicationContext-business-stats.xml", 
+				"classpath:applicationContext-data-mongodb.xml",
+				"classpath:applicationContext-data-dao.xml" );
+
+		CaptureScheduler captureScheduler = factory.getBean(CaptureScheduler.class);
+		if (!captureScheduler.hasStarted()) {
+			captureScheduler.start();
+		}
 	}
 
 }

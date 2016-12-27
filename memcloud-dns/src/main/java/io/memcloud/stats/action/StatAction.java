@@ -14,19 +14,19 @@ import org.apache.commons.lang.StringUtils;
 
 import io.downgoon.jresty.commons.utils.DateUtil;
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
+import io.memcloud.driver.mongodb.IMongodbStatManager;
+import io.memcloud.driver.mongodb.StatDBObject;
 import io.memcloud.memdns.action.BaseAction;
 import io.memcloud.memdns.util.CsvMedia;
-import io.memcloud.stats.MemStatSummary;
-import io.memcloud.stats.dao.IInstanceStatManager;
 import io.memcloud.stats.dao.IMemStatDao;
-import io.memcloud.stats.model.StatDBObject;
+import io.memcloud.stats.model.MemStatSummary;
 
 public class StatAction extends BaseAction  {
 
 	private static final long serialVersionUID = 3712165401650005372L;
 	
-	@Resource(name = "instatnceStatManager")
-	protected IInstanceStatManager instatnceStatManager;
+	@Resource(name = "mongodbStatManager")
+	protected IMongodbStatManager mongodbStatManager;
 	
 	@Resource(name = "memStatDao")
 	private IMemStatDao memStatDao;
@@ -118,7 +118,7 @@ public class StatAction extends BaseAction  {
 	 */
 	public String curr(){
 		StatDBObject object = null;
-//		object = instatnceStatManager.getCurrentStat(getCollName());
+//		object = mongodbStatManager.getCurrentStat(getCollName());
 		Map<String,Object> attachment = new LinkedHashMap<String, Object>();
 		attachment.put("Data", object);
 		

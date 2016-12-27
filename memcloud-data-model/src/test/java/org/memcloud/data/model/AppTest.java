@@ -1,4 +1,4 @@
-package org.memcloud.data.mongodb;
+package org.memcloud.data.model;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

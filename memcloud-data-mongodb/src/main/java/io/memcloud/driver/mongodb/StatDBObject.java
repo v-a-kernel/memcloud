@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.memcloud.stats.model;
+package io.memcloud.driver.mongodb;
 
 import java.util.Map;
 import java.util.Set;

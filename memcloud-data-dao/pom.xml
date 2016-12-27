@@ -21,7 +21,7 @@
 
 		<dependency>
 			<groupId>io.memcloud</groupId>
-			<artifactId>memcloud-conf</artifactId>
+			<artifactId>memcloud-data-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

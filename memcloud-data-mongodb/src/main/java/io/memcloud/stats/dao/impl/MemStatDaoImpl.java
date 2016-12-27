@@ -8,32 +8,32 @@ import java.util.regex.Pattern;
 import com.mongodb.BasicDBObject;
 
 import io.downgoon.jresty.commons.utils.DateUtil;
-import io.memcloud.stats.MemStatSummary;
-import io.memcloud.stats.dao.IInstanceStatManager;
+import io.memcloud.driver.mongodb.Constants;
+import io.memcloud.driver.mongodb.IMongodbStatManager;
+import io.memcloud.driver.mongodb.StatDBObject;
 import io.memcloud.stats.dao.IMemStatDao;
-import io.memcloud.stats.model.Constants;
-import io.memcloud.stats.model.StatDBObject;
+import io.memcloud.stats.model.MemStatSummary;
 
 /**
  * cmdType {0:GET,1:SET,2:Hit,3:Mis}
  * */
 public class MemStatDaoImpl implements IMemStatDao {
 
-	protected IInstanceStatManager instatnceStatManager;
+	protected IMongodbStatManager mongodbStatManager;
 
 	public MemStatDaoImpl() {
 
 	}
 
-	public MemStatDaoImpl(IInstanceStatManager instatnceStatManager) {
-		this.instatnceStatManager = instatnceStatManager;
+	public MemStatDaoImpl(IMongodbStatManager mongodbStatManager) {
+		this.mongodbStatManager = mongodbStatManager;
 	}
 
 	@Override
 	public MemStatSummary summary(String memIP, int memPort) {
 		MemStatSummary s = new MemStatSummary();
 		String collectionName = Constants.COLL_PREFIX+memIP+":"+memPort;
-		StatDBObject r = instatnceStatManager.getCurrentStat(collectionName);
+		StatDBObject r = mongodbStatManager.getCurrentStat(collectionName);
 		if (r == null) {//信息是实时获取的
 			return null;
 //			s.setUptimeSecond(1123455);
@@ -120,17 +120,17 @@ public class MemStatDaoImpl implements IMemStatDao {
 		List<StatDBObject> list = null;
 		switch (cmdType) {
 		case 0:
-			list = instatnceStatManager.getDailyGetTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
+			list = mongodbStatManager.getDailyGetTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
 			break;
 		case 1:
-			list = instatnceStatManager.getDailySetTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
+			list = mongodbStatManager.getDailySetTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
 			break;
 		case 2:
-			list = instatnceStatManager.getDailyHitTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
+			list = mongodbStatManager.getDailyHitTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
 			break;
 		case 3:
 		default:
-			list = instatnceStatManager.getDailyMissesTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
+			list = mongodbStatManager.getDailyMissesTrendStat(query, collectionName, Constants.TimeUnit.MINUTES_10);
 			break;
 		}
 
@@ -142,12 +142,12 @@ public class MemStatDaoImpl implements IMemStatDao {
 		return f;//y=f(x)
 	}
 
-	public IInstanceStatManager getInstatnceStatManager() {
-		return instatnceStatManager;
+	public IMongodbStatManager getMongodbStatManager() {
+		return mongodbStatManager;
 	}
 
-	public void setInstatnceStatManager(IInstanceStatManager instatnceStatManager) {
-		this.instatnceStatManager = instatnceStatManager;
+	public void setMongodbStatManager(IMongodbStatManager mongodbStatManager) {
+		this.mongodbStatManager = mongodbStatManager;
 	}
 
 

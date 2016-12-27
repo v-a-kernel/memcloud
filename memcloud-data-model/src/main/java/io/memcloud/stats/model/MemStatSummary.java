@@ -1,4 +1,4 @@
-package io.memcloud.stats;
+package io.memcloud.stats.model;
 
 import java.util.Date;
 

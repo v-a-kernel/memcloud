@@ -65,6 +65,27 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 
@@ -142,13 +163,17 @@
 	</build>
 
 	<modules>
-		<module>memcloud-dns</module>
 		<module>memcloud-client</module>
 		<module>memcloud-agent</module>
+		
+		<module>memcloud-dns</module>
+		<module>memcloud-alert</module>
+		
 		<module>memcloud-cas</module>
 		<module>memcloud-data-dao</module>
 		<module>memcloud-data-mongodb</module>
-		<module>memcloud-alert</module>
+		
+		<module>memcloud-data-model</module>
 		<module>memcloud-conf</module>
 	</modules>
 </project>

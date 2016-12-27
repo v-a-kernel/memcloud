@@ -3,7 +3,7 @@ package io.memcloud.stats.dao;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-import io.memcloud.stats.MemStatSummary;
+import io.memcloud.stats.model.MemStatSummary;
 
 public interface IMemStatDao {
 

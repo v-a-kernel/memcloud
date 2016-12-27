@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.memcloud.stats.dao.impl;
+package io.memcloud.driver.mongodb.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,33 +12,28 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import javax.annotation.Resource;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import io.memcloud.stats.model.Constants;
-import io.memcloud.stats.model.StatDBObject;
-import io.memcloud.mongodb.MongodbFactory;
-import io.memcloud.stats.dao.IInstanceStatManager;
+
+import io.memcloud.driver.mongodb.Constants;
+import io.memcloud.driver.mongodb.IMongodbStatManager;
+import io.memcloud.driver.mongodb.MongodbDatasource;
+import io.memcloud.driver.mongodb.StatDBObject;
 
 /**
  * @author ganghuawang
  * 统计Memcached实例的运行状态
  */
-public class InstanceStatManagerImpl implements IInstanceStatManager {
+public class MongodbStatManager implements IMongodbStatManager {
 
-	@Resource(name = "mongodbFactory")
-	private MongodbFactory mongodbFactory ;
+	private MongodbDatasource mongodbDatasource ;
 	
 
-	/* (non-Javadoc)
-	 * @see io.memcloud.dao.IInstanceStatManager#getCurrentStat()
-	 */
 	@Override
 	public StatDBObject getCurrentStat(String collName) {
-		DBCollection coll = mongodbFactory.getDBCollection(collName);
+		DBCollection coll = mongodbDatasource.getDBCollection(collName);
 		StatDBObject object = null;
 		
 		String dateStr = new SimpleDateFormat("yyyy-MM-dd HH").format(new Date());
@@ -55,9 +50,6 @@ public class InstanceStatManagerImpl implements IInstanceStatManager {
 	}
 	
 
-	/* (non-Javadoc)
-	 * @see io.memcloud.dao.IInstanceStatManager#getDailyGetTrendStat()
-	 */
 	@Override
 	public List<StatDBObject> getDailyGetTrendStat(DBObject query, String collName, Constants.TimeUnit timeUnit) {
 		return getIncrementStatDBObject(query, collName, Constants.CMD_GET, timeUnit);
@@ -79,9 +71,6 @@ public class InstanceStatManagerImpl implements IInstanceStatManager {
 		return getIncrementStatDBObject(query, collName, Constants.GET_MISSES, timeUnit);
 	}
 
-	/* (non-Javadoc)
-	 * @see io.memcloud.dao.IInstanceStatManager#getDailySetTrendStat()
-	 */
 	@Override
 	public List<StatDBObject> getDailySetTrendStat(DBObject query, String collName, Constants.TimeUnit timeUnit) {
 		return getIncrementStatDBObject(query, collName, Constants.TOTAL_ITEMS, timeUnit);
@@ -124,7 +113,7 @@ public class InstanceStatManagerImpl implements IInstanceStatManager {
 	 * @return
 	 */
 	private List<DBObject> getDailyDBObject(DBObject query, String collName, Constants.TimeUnit timeUnit){
-		DBCollection coll = mongodbFactory.getDBCollection(collName);
+		DBCollection coll = mongodbDatasource.getDBCollection(collName);
 		List<DBObject> list = new ArrayList<DBObject>();
 		int i=0;
 
@@ -171,5 +160,16 @@ public class InstanceStatManagerImpl implements IInstanceStatManager {
 		gc.setTime(date);
 		return gc.get(Calendar.HOUR_OF_DAY)*60 + gc.get(Calendar.MINUTE);
 	}
+
+
+	public MongodbDatasource getMongodbDatasource() {
+		return mongodbDatasource;
+	}
+
+
+	public void setMongodbDatasource(MongodbDatasource mongodbDatasource) {
+		this.mongodbDatasource = mongodbDatasource;
+	}
+	
 
 }

@@ -1,19 +1,17 @@
 /**
  * 
  */
-package io.memcloud.stats.dao;
+package io.memcloud.driver.mongodb;
 
 import java.util.List;
 
 import com.mongodb.DBObject;
-import io.memcloud.stats.model.Constants;
-import io.memcloud.stats.model.StatDBObject;
 
 /**
  * @author ganghuawang
  *
  */
-public interface IInstanceStatManager {
+public interface IMongodbStatManager {
 
 	/* 获取节点当前状态*/
 	public StatDBObject getCurrentStat(String collName);

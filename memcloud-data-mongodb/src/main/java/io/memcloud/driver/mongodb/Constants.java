@@ -1,4 +1,4 @@
-package io.memcloud.stats.model;
+package io.memcloud.driver.mongodb;
 
 public interface Constants {
 

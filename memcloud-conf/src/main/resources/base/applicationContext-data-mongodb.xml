@@ -24,26 +24,21 @@
         	</list>
         </property>
     </bean>
-    
-    
-    <bean id="memcachedClient_master" class="net.rubyeye.xmemcached.utils.XMemcachedClientFactoryBean" >
-		<property name="servers" value="localhost:11211"/>
-	</bean>
 	
 	<bean id="memStatDao" class="io.memcloud.stats.dao.impl.MemStatDaoImpl">
-		<property name="instatnceStatManager" ref="instatnceStatManager" />
+		<property name="mongodbStatManager" ref="mongodbStatManager" />
 	</bean>
     
-    <bean id="instatnceStatManager" class="io.memcloud.stats.dao.impl.InstanceStatManagerImpl" />
+    <bean id="mongodbStatManager" class="io.memcloud.driver.mongodb.impl.MongodbStatManager">
+    	<property name="mongodbDatasource" ref="mongodbDatasource" />
+    </bean>
 	
-    <bean id="mongodbFactory" class="io.memcloud.mongodb.MongodbFactory">
+    <bean id="mongodbDatasource" class="io.memcloud.driver.mongodb.MongodbDatasource">
         <constructor-arg index="0" value="${mongo.host}"/> 
         <constructor-arg index="1" value="${mongo.port}"/>
         <constructor-arg index="2" value="${mongo.dbname}"/>
         <constructor-arg index="3" value="${mongo.username}"/>
         <constructor-arg index="4" value="${mongo.password}"/>
     </bean>
-    
-    
     
 </beans>

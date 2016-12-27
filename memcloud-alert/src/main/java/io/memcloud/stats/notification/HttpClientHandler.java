@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.memcloud.stats.util;
+package io.memcloud.stats.notification;
 
 import java.io.IOException;
 

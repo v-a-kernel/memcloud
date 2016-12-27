@@ -20,8 +20,8 @@ import io.memcloud.memdns.dao.entry.AppMemGroup;
 import io.memcloud.memdns.dao.entry.MemFault;
 import io.memcloud.stats.business.IMemInstanceFaultManager;
 import io.memcloud.stats.dao.IMemFaultDao;
-import io.memcloud.stats.util.EmailHandler;
-import io.memcloud.stats.util.HttpClientHandler;
+import io.memcloud.stats.notification.EmailHandler;
+import io.memcloud.stats.notification.HttpClientHandler;
 
 /**
  * @author ganghuawang

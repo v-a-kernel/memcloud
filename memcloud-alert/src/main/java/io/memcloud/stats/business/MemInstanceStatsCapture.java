@@ -11,9 +11,9 @@ import javax.annotation.Resource;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import io.memcloud.mongodb.MongodbFactory;
-import io.memcloud.stats.model.Constants;
-import io.memcloud.stats.model.StatDBObject;
+import io.memcloud.driver.mongodb.Constants;
+import io.memcloud.driver.mongodb.MongodbDatasource;
+import io.memcloud.driver.mongodb.StatDBObject;
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 
@@ -21,8 +21,8 @@ public class MemInstanceStatsCapture {
 	
 	private static final Logger log = Logger.getLogger(MemInstanceStatsCapture.class);
 	
-	@Resource(name = "mongodbFactory")
-	private MongodbFactory mongodbFactory;
+	@Resource(name = "mongodbDatasource")
+	private MongodbDatasource mongodbDatasource;
 
 	public void stat(MemcachedClient client) {
 		
@@ -46,7 +46,7 @@ public class MemInstanceStatsCapture {
 				String collName = Constants.COLL_PREFIX + add.toString().trim().replace("/", "");
 				log.info(collName);
 				// 存入mongodb
-				mongodbFactory.getDBCollection(collName).insert(statDoc);
+				mongodbDatasource.getDBCollection(collName).insert(statDoc);
 			}
 			
 		} catch (MemcachedException e) {
@@ -70,13 +70,13 @@ public class MemInstanceStatsCapture {
 	}
 
 
-	public MongodbFactory getMongodbFactory() {
-		return mongodbFactory;
+	public MongodbDatasource getMongodbDatasource() {
+		return mongodbDatasource;
 	}
 
 
-	public void setMongodbFactory(MongodbFactory mongodbFactory) {
-		this.mongodbFactory = mongodbFactory;
+	public void setMongodbDatasource(MongodbDatasource mongodbDatasource) {
+		this.mongodbDatasource = mongodbDatasource;
 	}
 	
 	
