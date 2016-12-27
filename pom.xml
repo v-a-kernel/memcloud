@@ -109,5 +109,6 @@
 		<module>memcloud-data-dao</module>
 		<module>memcloud-data-mongodb</module>
     <module>memcloud-alert</module>
+    <module>memcloud-conf</module>
   </modules>
 </project>

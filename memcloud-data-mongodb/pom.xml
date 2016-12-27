@@ -15,14 +15,20 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mongo.version>2.7.3</mongo.version>
 	</properties>
+
 	<dependencies>
+
+		<dependency>
+			<groupId>io.memcloud</groupId>
+			<artifactId>memcloud-conf</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
 			<version>${mongo.version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>io.downgoon</groupId>
@@ -31,4 +37,6 @@
 		</dependency>
 
 	</dependencies>
+
+
 </project>
