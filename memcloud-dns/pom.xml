@@ -17,8 +17,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jetty.version>7.2.0.v20101020</jetty.version>
-		<hibernate.version>3.6.10.Final</hibernate.version>
-		<c3p0.version>0.9.1.2</c3p0.version>
 	</properties>
 
 

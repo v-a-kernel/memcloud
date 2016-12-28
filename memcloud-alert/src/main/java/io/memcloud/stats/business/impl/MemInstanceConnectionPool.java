@@ -18,7 +18,7 @@ import net.rubyeye.xmemcached.utils.AddrUtil;
  */
 public class MemInstanceConnectionPool implements IMemInstanceConnectionPool {
 
-	private static Logger log = Logger.getLogger(MemInstanceConnectionPool.class);
+	private static Logger LOG = Logger.getLogger(MemInstanceConnectionPool.class);
 	
 	
 	private static Map<String, MemcachedClient> clientPool = new ConcurrentHashMap<String,MemcachedClient>();
@@ -31,7 +31,7 @@ public class MemInstanceConnectionPool implements IMemInstanceConnectionPool {
 	@Override
 	public MemcachedClient addClient(String host, int port) {
 		MemcachedClient client = createClient(host, port);
-		log.info("xmemcached client list size :" + clientPool.size());
+		LOG.info("xmemcached client list size :" + clientPool.size());
 		return client;
 	}
 
@@ -48,7 +48,7 @@ public class MemInstanceConnectionPool implements IMemInstanceConnectionPool {
 		}finally{
 			clientPool.remove(host+":"+port);
 		}
-		log.info("xmemcached client list size :" + clientPool.size());
+		LOG.info("xmemcached client list size :" + clientPool.size());
 	}
 	
 	/**

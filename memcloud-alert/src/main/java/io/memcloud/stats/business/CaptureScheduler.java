@@ -97,6 +97,12 @@ public class CaptureScheduler {
 
 	public static void main(String[] args) throws Exception {
 
+		/*
+		 * http://blog.csdn.net/qjyong/article/details/4745517
+		 * 
+		 * https://my.oschina.net/u/2301987/blog/626437
+		 * 
+		 * */
 		ApplicationContext factory = new ClassPathXmlApplicationContext(
 				"classpath:applicationContext-business-stats.xml", 
 				"classpath:applicationContext-data-mongodb.xml",
