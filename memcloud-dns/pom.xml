@@ -12,7 +12,7 @@
 	<artifactId>memcloud-dns</artifactId>
 	<name>memcloud-dns</name>
 	<packaging>war</packaging>
-	
+
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,8 +57,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>io.memcloud</groupId>
 			<artifactId>memcloud-data-model</artifactId>
@@ -243,7 +243,7 @@
 
 		</plugins>
 
-		
+
 	</build>
 
 </project>
