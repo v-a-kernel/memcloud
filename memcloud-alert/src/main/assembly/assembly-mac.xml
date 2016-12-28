@@ -45,7 +45,10 @@
 			<directory>../memcloud-conf/src/main/resources/base</directory>
 			<outputDirectory>${project.build.finalName}/conf</outputDirectory>
 			<includes>
-				<include>*</include>
+				<include>applicationContext-comms.xml</include>
+				<include>applicationContext-business-stats.xml</include>
+				<include>applicationContext-data-mongodb.xml</include>
+				<include>applicationContext-data-dao.xml</include>
 			</includes>
 		</fileSet>
 
