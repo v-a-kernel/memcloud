@@ -104,9 +104,11 @@ public class CaptureScheduler {
 		 * 
 		 * */
 		ApplicationContext factory = new ClassPathXmlApplicationContext(
+				"classpath:applicationContext-comms.xml",
 				"classpath:applicationContext-business-stats.xml", 
 				"classpath:applicationContext-data-mongodb.xml",
-				"classpath:applicationContext-data-dao.xml" );
+				"classpath:applicationContext-data-dao.xml"
+				);
 
 		CaptureScheduler captureScheduler = factory.getBean(CaptureScheduler.class);
 		if (!captureScheduler.hasStarted()) {

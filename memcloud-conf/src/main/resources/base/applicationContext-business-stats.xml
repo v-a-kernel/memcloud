@@ -29,4 +29,6 @@
     
     <bean id="memInstanceFaultManager" class="io.memcloud.stats.business.impl.MemInstanceFaultManager" />
     
+    <bean id="faultNotify" class="io.memcloud.stats.notification.impl.FaultNotify" />
+    
 </beans>

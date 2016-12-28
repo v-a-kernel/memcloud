@@ -1,7 +1,7 @@
 /**
  * 
  */
-package io.memcloud.stats.notification;
+package io.memcloud.stats.notification.impl;
 
 import java.util.Properties;
 
@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMultipart;
  * @author ganghuawang
  * 邮件发送实现类
  */
-public class EmailHandler {
+public class EmailPusher {
 
 	private MimeMessage mimeMsg; // MIME邮件对象
 
@@ -30,15 +30,15 @@ public class EmailHandler {
 	
 	private Multipart mp; // Multipart对象,邮件内容,标题,附件等内容均添加到其中后再生成MimeMessage对象
 	
-	private static EmailHandler instance = null;
+	private static EmailPusher instance = null;
 	
-	private EmailHandler(){}
+	private EmailPusher(){}
 	
-	public static EmailHandler getInstance(){
+	public static EmailPusher getInstance(){
 		if(instance == null){
-			synchronized (EmailHandler.class) {
+			synchronized (EmailPusher.class) {
 				if(instance == null)
-					instance = new EmailHandler();
+					instance = new EmailPusher();
 			}
 		}
 		return instance ;
@@ -84,7 +84,7 @@ public class EmailHandler {
 	}
 	
 	public static void main(String[] args) {
-		EmailHandler.getInstance().sendEmail("ganghuawang@sohu-inc.com", "test");
+		EmailPusher.getInstance().sendEmail("ganghuawang@sohu-inc.com", "test");
 	}
 	
 }
