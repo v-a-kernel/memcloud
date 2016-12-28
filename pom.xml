@@ -6,7 +6,7 @@
 	<artifactId>memcloud</artifactId>
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>passport Maven Webapp</name>
+	<name>memcloud</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
