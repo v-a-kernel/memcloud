@@ -33,7 +33,7 @@ public class PingAction extends BaseAction {
 		log.info(getRefNum4Log()+":"+"系统运行正常");
 		//SOHU Page Status Number 是给页面静态化使用的私有协议，PSN由：M/N构成，其中M<=N；
 		//如果M<N表示页面生成残缺；如果M=N表示生成正常。
-		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("SOHU-PSN", "1/1"), false);
+		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("PSN", "1/1"), false);
 	}
 	
 }

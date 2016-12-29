@@ -18,8 +18,8 @@ public class ClientAction extends BaseAction {
 
 	private static final long serialVersionUID = 6823488814069015646L;
 	
-	@Resource(name = "memcachedClientHandler")
-	private IMemInstanceConnectionPool memcachedClientHandler;
+	@Resource(name = "memInstanceConnectionPool")
+	private IMemInstanceConnectionPool memInstanceConnectionPool;
 	
 	/**
 	 * 添加client
@@ -30,10 +30,10 @@ public class ClientAction extends BaseAction {
 		if(paramId == null){
 			responseModel.setStatus(RC_ERR_ARG);
 			responseModel.setMessage("host and port required");
-			return REST(new DefaultHttpHeaders(ERROR).withStatus(404).addHeader("SOHU-PSN", "0/1"), false);
+			return REST(new DefaultHttpHeaders(ERROR).withStatus(404).addHeader("PSN", "0/1"), false);
 		}
-		memcachedClientHandler.addClient(getHostFromParam(), getPortFromParam());
-		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("SOHU-PSN", "1/1"), false);
+		memInstanceConnectionPool.addClient(getHostFromParam(), getPortFromParam());
+		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("PSN", "1/1"), false);
 	}
 	
 	/**
@@ -45,10 +45,10 @@ public class ClientAction extends BaseAction {
 		if(paramId == null){
 			responseModel.setStatus(RC_ERR_ARG);
 			responseModel.setMessage("host and port required");
-			return REST(new DefaultHttpHeaders(ERROR).withStatus(404).addHeader("SOHU-PSN", "0/1"), false);
+			return REST(new DefaultHttpHeaders(ERROR).withStatus(404).addHeader("PSN", "0/1"), false);
 		}
-		memcachedClientHandler.removeClient(getHostFromParam(), getPortFromParam());
-		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("SOHU-PSN", "1/1"), false);
+		memInstanceConnectionPool.removeClient(getHostFromParam(), getPortFromParam());
+		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("PSN", "1/1"), false);
 	}
 	
 	/**

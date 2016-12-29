@@ -19,16 +19,14 @@
     <bean id="memInstanceMetaFetcher" class="io.memcloud.stats.business.impl.MemInstanceMetaFetcher" />
     <bean id="memInstanceConnectionPool" class="io.memcloud.stats.business.impl.MemInstanceConnectionPool" />
     
-
+	<bean id="memInstanceStatsCapture" class="io.memcloud.stats.business.MemInstanceStatsCapture" />
     <bean id="memInstanceFaultCapture" class="io.memcloud.stats.business.MemInstanceFaultCapture" >
     	<property name="memInstanceFaultManager" ref="memInstanceFaultManager" />
     </bean>
     
     
-    <bean id="memInstanceStatsCapture" class="io.memcloud.stats.business.MemInstanceStatsCapture" />
     
     <bean id="memInstanceFaultManager" class="io.memcloud.stats.business.impl.MemInstanceFaultManager" />
-    
     <bean id="faultNotify" class="io.memcloud.stats.notification.impl.FaultNotify" />
     
 </beans>

@@ -125,7 +125,7 @@ public class StatAction extends BaseAction  {
 		responseModel.setStatus(RC_SUCC);
 		responseModel.setMessage("ok");
 		responseModel.setAttachment(attachment);	
-		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("SOHU-PSN", "1/1"), false);
+		return REST(new DefaultHttpHeaders(SUCCESS).withStatus(200).addHeader("PSN", "1/1"), false);
 	}
 	
 	/**
