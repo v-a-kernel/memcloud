@@ -21,6 +21,15 @@
 				<include>*.md</include>
 			</includes>
 		</fileSet>
+		
+		<fileSet>
+			<directory>src/main/assembly/lib</directory>
+			<outputDirectory>${project.build.finalName}/lib</outputDirectory>
+			<fileMode>0755</fileMode>
+			<includes>
+				<include>*.gz</include>
+			</includes>
+		</fileSet>
 
 	</fileSets>
 

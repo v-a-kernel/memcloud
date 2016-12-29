@@ -7,7 +7,7 @@
 #exit value mapping (you can get this value by executing "echo $?" after this script executed)
 #0 SUCC
 #1 EXIST (Needless to install memcached)
-#2 ERROR 
+#2 ERROR
 
 if [ -e /usr/local/bin/memcached ]; then
    echo "/usr/local/bin/memcached exist"
@@ -16,87 +16,91 @@ fi
 ##################################################################################
 #CONFIGURATIONS
 
-url_libevent=https://github.com/downloads/libevent/libevent/libevent-2.0.19-stable.tar.gz
-url_repcached=http://mdounin.ru/files/repcached-2.3-1.4.5.patch.gz
-#url_memcached=http://memcached.googlecode.com/files/memcached-1.4.5.tar.gz
-url_memcached=https://github.com/downgoon/memcloud/files/626324/memcached-1.4.5.tar.gz
-path_software=/opt/memcloud/
+# remote repository containing dependency packages
+
+remote_libevent=https://github.com/downgoon/memcloud/files/626325/libevent-2.0.19-stable.tar.gz
+remote_repcached=https://github.com/downgoon/memcloud/files/626326/repcached-2.3-1.4.5.patch.gz
+remote_memcached=https://github.com/downgoon/memcloud/files/626324/memcached-1.4.5.tar.gz
+
+# download remote packages into the local repository path (ended with '/')
+# if the packages has been found in local repository, downloading will not be executed
+local_repository=$base_dir/lib/
 
 debug=true
 
 ##################################################################################
 
 if [ ! -L ~/memcloud ]; then
-   /bin/ln -s $path_software ~/memcloud
+   /bin/ln -s $local_repository ~/memcloud
 fi
 
 
 curdir=$(pwd)
-#make directory for $path_software
-if [ ! -e $path_software ]; then
-  /bin/mkdir -p $path_software   
+#make directory for $local_repository
+if [ ! -e $local_repository ]; then
+  /bin/mkdir -p $local_repository
 fi
-if [ ! -e $path_software ]; then
-   echo "ERROR: install path $path_software create fail, please change another path by editing var named 'path_software' in CONFIGURATIONS of this script"
-   exit 2 
+if [ ! -e $local_repository ]; then
+   echo "ERROR: install path $local_repository create fail, please change another path by editing var named 'local_repository' in CONFIGURATIONS of this script"
+   exit 2
 fi
 
 #Download libevent, repcached and memcached if they are not found in the specified path
-file_libevent=`echo $url_libevent | grep -P -o 'libevent-.*$'`
-file_repcached=`echo $url_repcached | grep -P -o 'repcached-.*$'`
-file_memcached=`echo $url_memcached | grep -P -o 'memcached-.*$'`
+file_libevent=`echo $remote_libevent | grep -P -o 'libevent-.*$'`
+file_repcached=`echo $remote_repcached | grep -P -o 'repcached-.*$'`
+file_memcached=`echo $remote_memcached | grep -P -o 'memcached-.*$'`
 
 unzipdir_libevent=`echo $file_libevent | awk -F'.tar' '{ printf "%s", $1 }'`
 unzipdir_memcached=`echo $file_memcached | awk -F'.tar' '{ printf "%s", $1 }'`
 
 if [ debug ]; then
-   echo "path_software:["$path_software"]"
+   echo "local_repository:["$local_repository"]"
    echo "libevent version: "$file_libevent
    echo "repcached version: "$file_repcached
    echo "memcached version: "$file_memcached
    echo "unzipdir_libevent:["$unzipdir_libevent"]"
-   echo "["$path_software$unzipdir_libevent"]"
+   echo "["$local_repository$unzipdir_libevent"]"
 fi
 
-ls $path_software | grep libevent
+ls $local_repository | grep libevent
 if [ $? -ne 0 ]; then
-  /usr/bin/wget $url_libevent -P $path_software 
+  /usr/bin/wget $remote_libevent -P $local_repository
 fi
 
 
-ls $path_software | grep memcached
+ls $local_repository | grep memcached
 if [ $? -ne 0 ]; then
-   /usr/bin/wget $url_memcached -P $path_software
+   /usr/bin/wget $remote_memcached -P $local_repository
 fi
 
 
-if [ ! -e $path_software$file_repcached ]; then 
-  /usr/bin/wget $url_repcached -P $path_software
+if [ ! -e $local_repository$file_repcached ]; then
+  /usr/bin/wget $remote_repcached -P $local_repository
 fi
 
 
 #unzip libevent and memcached (with repcached patch)
-/bin/tar zxvf $path_software$file_libevent -C $path_software
-/bin/tar zxvf $path_software$file_memcached -C $path_software
-cp -r $path_software$file_repcached $path_software$unzipdir_memcached
-cd $path_software$unzipdir_memcached
+/bin/tar zxvf $local_repository$file_libevent -C $local_repository
+/bin/tar zxvf $local_repository$file_memcached -C $local_repository
+cp -r $local_repository$file_repcached $local_repository$unzipdir_memcached
+cd $local_repository$unzipdir_memcached
 
 # unzip some.patch.gz and then unpatch some.patch
 
-if [ -e $path_software$file_repcached ]; then
+if [ -e $local_repository$file_repcached ]; then
    echo "unzip $file_repcached ..."
-   gzip -d ${file_repcached} 
+   gzip -d ${file_repcached}
 fi
 
 echo "unpatch ${file_repcached%%.gz*} ..."
 /usr/bin/patch --force -p1 -i ${file_repcached%%.gz*}
 
 #install libevent
-cd $path_software$unzipdir_libevent
+cd $local_repository$unzipdir_libevent
 ./configure --prefix=/usr/local && make && make install
 
 #install memcached with repcached patch
-cd $path_software$unzipdir_memcached
+cd $local_repository$unzipdir_memcached
 ./configure --prefix=/usr/local --with-libevent=/usr/local --enable-replication && make && make install
 
 #create the appropriate symlink for libevent
@@ -112,12 +116,11 @@ fi
 cd $curdir
 
 inner_ip=`ifconfig | grep -P 'inet addr:(10.|192.)' | head -1 | awk '{ printf "%s", substr($2,6) }'`
-if [ -e /usr/local/bin/memcached ]; 
+if [ -e /usr/local/bin/memcached ];
 then
    echo "memcloud installed ok: /usr/local/bin/memcached"
    echo "/usr/local/bin/memcached -d -m 100 -u root -l $inner_ip -p 11211 -c 256 -P /tmp/memcached.pid"
    exit 0
-else 
-   exit 2 
+else
+   exit 2
 fi
-
