@@ -24,7 +24,7 @@ remote_memcached=https://github.com/downgoon/memcloud/files/626324/memcached-1.4
 
 # download remote packages into the local repository path (ended with '/')
 # if the packages has been found in local repository, downloading will not be executed
-local_repository=$base_dir/lib/
+local_repository=$(cd `dirname $0`; pwd)/lib/
 
 debug=true
 
