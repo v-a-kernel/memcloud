@@ -3,6 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 	
+	
+	<!-- 
 	<bean name="dynamicConfiguration" class="io.downgoon.jresty.commons.utils.DynamicProperties">
 		<description>constructor method signature: String fileName,long delay,long period,String name,String charset</description>
 		<constructor-arg index="0" value="classpath:dynamic.properties"/>
@@ -11,5 +13,17 @@
 		<constructor-arg index="3" value="default"/>
 		<constructor-arg index="4" value="UTF-8"/>
 	</bean>
+	 -->
+	 
+	 <bean id="propertyConfigurerDynamic"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="3" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+        	<list> 
+	        	<value>classpath:dynamic.properties</value>
+        	</list>
+        </property>
+    </bean>
 	
 </beans>

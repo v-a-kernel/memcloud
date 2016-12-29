@@ -8,7 +8,6 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 
 import io.downgoon.jresty.commons.security.Base64Codec;
-import io.downgoon.jresty.commons.utils.DynamicProperties;
 import io.downgoon.jresty.rest.model.UnifiedResponse;
 import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
 
@@ -20,7 +19,8 @@ public class BaseAuthInterceptor extends BaseInterceptor implements API4Internal
 	@Override
 	protected String doIntercept(ActionInvocation invocation) throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
-		String scopelist = DynamicProperties.parseRefProperty(baseauthlist);
+		// String scopelist = DynamicProperties.parseRefProperty(baseauthlist);
+		String scopelist = baseauthlist;
 		if("*".equals(scopelist)) {//额外增加一个统配
 			return invocation.invoke();
 		}

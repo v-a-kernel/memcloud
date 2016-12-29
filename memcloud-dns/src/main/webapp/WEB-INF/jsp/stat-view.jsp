@@ -1,6 +1,6 @@
 <%@page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="io.memcloud.stats.MemStatSummary" %>
+<%@page import="io.memcloud.stats.model.MemStatSummary" %>
 <%@page import="io.downgoon.jresty.commons.utils.*,io.downgoon.jresty.commons.security.*" %>
 <%
 UnifiedResponse  up = (UnifiedResponse)request.getAttribute("model");

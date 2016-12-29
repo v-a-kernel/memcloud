@@ -57,7 +57,7 @@
 	<bean name="baseAuthInterceptor" scope="prototype"
 		class="io.memcloud.memdns.interceptor.BaseAuthInterceptor"
 		parent="baseInterceptor">
-		<property name="baseauthlist" value="dynamic/acl.adminlist" />
+		<property name="baseauthlist" value="${acl.adminlist}" />
 	</bean>
 
 	<bean name="loginAuthInterceptor" scope="prototype"
