@@ -43,6 +43,17 @@
 				<build.profile>op</build.profile>
 			</properties>
 		</profile>
+		
+		<!-- qa alias -->
+		<profile>
+			<id>sit</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<build.profile>qa</build.profile>
+			</properties>
+		</profile>
 	</profiles>
 
 	<dependencies>

@@ -3,6 +3,15 @@
 ###	version 1.0 memcloud.sh
 ######################################################################################
 
+
+##########
+###	config
+##########
+
+memdns=http://memcloud.intra.sit.ffan.net
+
+##########
+
 curdir=$(pwd)
 isdebug=1
 
@@ -20,7 +29,7 @@ fi
 la=$1
 ra=$2
 
-if echo $la | grep -P '^(\d+\.){3}\d+:\d{1,8}$' > /dev/null ; then 
+if echo $la | grep -P '^(\d+\.){3}\d+:\d{1,8}$' > /dev/null ; then
   local_ip=`echo $la | awk -F':' '{ printf "%s", $1}'`
   local_port=`echo $la | awk -F':' '{ printf "%s", $2}'`
 else
@@ -28,7 +37,7 @@ else
   if [ $? -eq 0 ]; then
       local_ip=`ifconfig | grep -P 'inet addr:(10.|192.)' | head -1 | awk '{ printf "%s", substr($2,6) }'`
       local_port=$la
-     else 
+     else
        echo "local addr format error: [local_ip:]<local_port>"
        exit 3
   fi
@@ -37,7 +46,7 @@ fi
 echo $ra | grep  -P '^(\d+\.){3}\d+:\d{1,8}$' > /dev/null
 if [ $? -ne 0 ]; then
    echo "remote addr format error:<peer_ip:repc_port>"
-   exit 4 
+   exit 4
 fi
 
 peer_ip=`echo -n $ra | awk -F':' '{ printf "%s", $1}'`
@@ -67,10 +76,10 @@ if [ isdebug ]; then
    echo "/usr/local/bin/memcached -d -p ${local_port} -m ${arg_mem} -x ${peer_ip} -X ${repc_port} -u ${arg_user} -l ${local_ip}  -c ${arg_conn} -P ${file_pid} -v >> ./memdebug.log  2>&1"
 fi
 
-/usr/local/bin/memcached -d -p ${local_port} -m ${arg_mem} -x ${peer_ip} -X ${repc_port} -u ${arg_user} -l ${local_ip}  -c ${arg_conn} -P ${file_pid} 
+/usr/local/bin/memcached -d -p ${local_port} -m ${arg_mem} -x ${peer_ip} -X ${repc_port} -u ${arg_user} -l ${local_ip}  -c ${arg_conn} -P ${file_pid}
 
 ##############################################################################
-### append mem-instance into mem-dns though HTTP API 
+### append mem-instance into mem-dns though HTTP API
 ##############################################################################
 
 cmd="/usr/local/bin/memcached -d -p ${local_port} -m ${arg_mem} -x ${peer_ip} -X ${repc_port} -u ${arg_user} -l ${local_ip}  -c ${arg_conn} -P ${file_pid}"
@@ -78,7 +87,7 @@ cmd="/usr/local/bin/memcached -d -p ${local_port} -m ${arg_mem} -x ${peer_ip} -X
 pageRoot=$curdir
 pageName=${local_port}_${peer_ip}_${repc_port}
 
-/usr/bin/curl http://10.10.83.177/memcloud/mem-create.xml --data cmd="${cmd}" --silent --connect-timeout 30 --dump-header ${pageRoot}/${pageName}_new.head --output ${pageRoot}/${pageName}_new.body
+/usr/bin/curl ${memdns}/memcloud/mem-create.xml --data cmd="${cmd}" --silent --connect-timeout 30 --dump-header ${pageRoot}/${pageName}_new.head --output ${pageRoot}/${pageName}_new.body
 
 #CHECK: HTTP STATUS CODE
 code=`grep HTTP/1. ${pageRoot}/${pageName}_new.head | tr -d '\n\r' | awk {'print $2'}`
