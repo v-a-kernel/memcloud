@@ -53,6 +53,12 @@ public class MemInstanceConnectionPool implements IMemInstanceConnectionPool {
 		LOG.info("xmemcached client list size :" + clientPool.size());
 	}
 	
+	
+	@Override
+	public boolean hasClient(String host, int port) {
+		return clientPool.containsKey(host+":"+port);
+	}
+
 	/**
 	 * 创建xmemcached客户端连接
 	 * @param host

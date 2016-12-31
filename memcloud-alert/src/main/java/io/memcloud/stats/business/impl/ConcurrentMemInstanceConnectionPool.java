@@ -55,6 +55,13 @@ public class ConcurrentMemInstanceConnectionPool implements IMemInstanceConnecti
 		}
 	}
 	
+	@Override
+	public boolean hasClient(String host, int port) {
+		String name = host + ":" + port;
+		return clientPool.containsName(name);
+	}
+
+
 	private class MemcachedClientLifecycle implements ResourceLifecycle<MemcachedClient> {
 
 		@Override
