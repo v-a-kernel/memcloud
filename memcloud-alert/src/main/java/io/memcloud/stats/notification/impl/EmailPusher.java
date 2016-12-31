@@ -64,7 +64,7 @@ public class EmailPusher {
 			bp.setContent(content, "text/html;charset=GBK");
 			mp.addBodyPart(bp);
 			// 设置发信人
-			mimeMsg.setFrom(new InternetAddress("hdtv@contact.sohu.com")); 
+			mimeMsg.setFrom(new InternetAddress("no-reply@example.com")); 
 			// 设置接收人
 			mimeMsg.setRecipients(Message.RecipientType.TO, email);
 			
@@ -74,7 +74,7 @@ public class EmailPusher {
 			Session mailSession = Session.getInstance(props, null);
 			Transport transport = mailSession.getTransport("smtp");
 			// 连接SMTP
-			transport.connect((String) props.get("mail.smtp.host"), "hdtvstat", "11111111");
+			transport.connect((String) props.get("mail.smtp.host"), "no-reply", "11111111");
 			// 发送邮件
 			transport.sendMessage(mimeMsg, mimeMsg.getRecipients(Message.RecipientType.TO));
 			transport.close();
@@ -84,7 +84,7 @@ public class EmailPusher {
 	}
 	
 	public static void main(String[] args) {
-		EmailPusher.getInstance().sendEmail("ganghuawang@sohu-inc.com", "test");
+		EmailPusher.getInstance().sendEmail("ganghuawang@example.com", "test");
 	}
 	
 }

@@ -4,13 +4,12 @@ import net.sf.json.JSONObject;
 
 public class MemDNSRefresh implements IMemDNSRefresh {
 
-	private static final String STAR_STORE = "http://memcloud.hd.sohu.com/memcloud/dns/%s.json";
 	
 	@Override
 	public MemDNSLookup refreshDNS(String appid) {
-		String api = String.format(STAR_STORE, appid);
+		String api = apiAddr(appid);
 		String jsonText = HttpUtil.doGet(api, "UTF-8");
-		//DEMO: {"attachment":{"appId":10001,"version":1,"groupText":"10\u002e10\u002e83\u002e178\u003a14503\u002c10\u002e10\u002e83\u002e177\u003a14504","shardNum":1,"timestamp":1341368772169,"ttlSecond":10},"debug":"","message":"SUCC","status":200}
+
 		JSONObject jsonObj = JSONObject.fromObject(jsonText);
 		if (jsonObj.getInt("status") != 200) {
 			return null;
@@ -27,4 +26,16 @@ public class MemDNSRefresh implements IMemDNSRefresh {
 		return lookup;
 	}
 
+	protected String apiAddr(String appid) {
+		String memdns = System.getProperty("memcloud.memdns");
+		
+		String template = "/memcloud/dns/%s.json";
+		if (memdns.startsWith("http:")) {
+			template =  memdns + template;
+		} else {
+			template = "http://" + memdns + template;
+		}
+		  
+		return String.format(template, appid);
+	} 
 }

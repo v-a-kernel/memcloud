@@ -12,7 +12,7 @@ public class FaultNotify implements IFaultNotify {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(FaultNotify.class);
 	
-	static final String failureTemplate = "memcloud:%s:%s,http://index.tv.sohu.com/memcloud/fault/%s";
+	static final String failureTemplate = "memcloud:%s:%s,http://memcloud.io/memcloud/fault/%s";
 	
 	static final String recoveryTemplate = "memcloud:%s:%s,OK";
 
