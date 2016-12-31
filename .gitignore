@@ -231,10 +231,11 @@ Temporary Items
 .nfs*
 ########################################
 
-## exceptional
+## exceptional cases when web packaging
 ! **/apache-tomcat-8.0.30/bin
 ! **/apache-tomcat-8.0.30/conf
 ! **/apache-tomcat-8.0.30/lib
 ! **/apache-tomcat-8.0.30/logs
 ! **/apache-tomcat-8.0.30/temp
 ! **/apache-tomcat-8.0.30/webapps
+! **/apache-tomcat-8.0.30/work
