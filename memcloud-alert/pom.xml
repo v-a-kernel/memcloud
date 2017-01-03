@@ -161,16 +161,12 @@
 											<value>conf</value>
 										</property>
 										<property>
-											<name>wrapper.ping.timeout</name>
-											<value>120</value>
-										</property>
-										<property>
 											<name>set.default.REPO_DIR</name>
 											<value>lib</value>
 										</property>
 										<property>
 											<name>wrapper.logfile</name>
-											<value>logs/wrapper.log</value>
+											<value>logs/memalert.log</value>
 										</property>
 									</configuration>
 
@@ -195,7 +191,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptors>
-						<descriptor>src/main/assembly/assembly-mac.xml</descriptor>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
 					</descriptors>
 				</configuration>
 				<executions>

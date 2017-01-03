@@ -15,13 +15,15 @@ import net.rubyeye.xmemcached.utils.AddrUtil;
 /**
  * @author ganghuawang
  * 初始化memcached客户端，并监听状态
+ * @deprecated
+ * @see	ConcurrentMemInstanceConnectionPool
  */
 public class MemInstanceConnectionPool implements IMemInstanceConnectionPool {
 
 	private static Logger LOG = Logger.getLogger(MemInstanceConnectionPool.class);
 	
 	
-	private static Map<String, MemcachedClient> clientPool = new ConcurrentHashMap<String,MemcachedClient>();
+	private Map<String, MemcachedClient> clientPool = new ConcurrentHashMap<String,MemcachedClient>();
 
 	@Override
 	public Map<String, MemcachedClient> getConnectionPool() {
@@ -51,6 +53,12 @@ public class MemInstanceConnectionPool implements IMemInstanceConnectionPool {
 		LOG.info("xmemcached client list size :" + clientPool.size());
 	}
 	
+	
+	@Override
+	public boolean hasClient(String host, int port) {
+		return clientPool.containsKey(host+":"+port);
+	}
+
 	/**
 	 * 创建xmemcached客户端连接
 	 * @param host

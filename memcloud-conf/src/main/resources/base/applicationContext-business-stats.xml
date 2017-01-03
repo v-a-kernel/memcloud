@@ -17,7 +17,7 @@
     
     
     <bean id="memInstanceMetaFetcher" class="io.memcloud.stats.business.impl.MemInstanceMetaFetcher" />
-    <bean id="memInstanceConnectionPool" class="io.memcloud.stats.business.impl.MemInstanceConnectionPool" />
+    <bean id="memInstanceConnectionPool" class="io.memcloud.stats.business.impl.ConcurrentMemInstanceConnectionPool" />
     
 	<bean id="memInstanceStatsCapture" class="io.memcloud.stats.business.MemInstanceStatsCapture" />
     <bean id="memInstanceFaultCapture" class="io.memcloud.stats.business.MemInstanceFaultCapture" >

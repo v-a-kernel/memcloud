@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.dao.entry.MemFault;
 import io.memcloud.stats.dao.IMemFaultDao;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 /**
  * @author ganghuawang

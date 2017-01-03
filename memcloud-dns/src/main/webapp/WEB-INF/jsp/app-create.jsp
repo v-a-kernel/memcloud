@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="io.downgoon.jresty.rest.model.UnifiedResponse,io.downgoon.jresty.rest.model.UnifiedResponseCode" %>
-<%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,io.downgoon.jresty.commons.utils.*" %>
+<%@page import="com.github.downgoon.jresty.rest.model.UnifiedResponse,com.github.downgoon.jresty.rest.model.UnifiedResponseCode" %>
+<%@page import="java.util.*,io.memcloud.memdns.dao.entry.AppDesc,com.github.downgoon.jresty.commons.utils.*" %>
 <%@ include file="../conf.jsp"%>
 <%
 	boolean isRequestPage = false;//表示本次页面是作为请求，还是响应

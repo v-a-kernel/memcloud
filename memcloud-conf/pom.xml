@@ -19,7 +19,7 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>io.downgoon</groupId>
+			<groupId>com.github.downgoon</groupId>
 			<artifactId>jresty-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

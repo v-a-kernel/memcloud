@@ -11,7 +11,7 @@ import io.memcloud.memdns.dao.IMemInstanceDao;
 import io.memcloud.memdns.dao.entry.MemInstance;
 import io.memcloud.memdns.dao.entry.MemInstancePeer;
 
-import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
+import com.github.downgoon.jresty.rest.view.DefaultHttpHeaders;
 
 /** {@link MemInstance} 资源池中的资源引进和分配 */
 public class MemAction extends BaseAction {

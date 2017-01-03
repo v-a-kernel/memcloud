@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
 
-import io.downgoon.jresty.commons.utils.DateUtil;
-import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
+import com.github.downgoon.jresty.commons.utils.DateUtil;
+import com.github.downgoon.jresty.rest.view.DefaultHttpHeaders;
 import io.memcloud.driver.mongodb.IMongodbStatManager;
 import io.memcloud.driver.mongodb.StatDBObject;
 import io.memcloud.memdns.action.BaseAction;

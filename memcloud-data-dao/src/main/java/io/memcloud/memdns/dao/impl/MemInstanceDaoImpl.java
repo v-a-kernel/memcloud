@@ -12,7 +12,7 @@ import io.memcloud.memdns.dao.IMemInstanceDao;
 import io.memcloud.memdns.dao.entry.MemInstance;
 import io.memcloud.memdns.dao.entry.MemInstancePeer;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class MemInstanceDaoImpl implements IMemInstanceDao {
 

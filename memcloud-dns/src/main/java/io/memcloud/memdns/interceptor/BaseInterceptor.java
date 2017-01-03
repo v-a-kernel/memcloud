@@ -5,7 +5,7 @@ import org.apache.commons.logging.LogFactory;
 
 import io.memcloud.memdns.model.Constants;
 
-import io.downgoon.jresty.rest.struts2.interceptor.RestInterceptorSupport;
+import com.github.downgoon.jresty.rest.struts2.interceptor.RestInterceptorSupport;
 
 public abstract class BaseInterceptor extends RestInterceptorSupport implements Constants {
 

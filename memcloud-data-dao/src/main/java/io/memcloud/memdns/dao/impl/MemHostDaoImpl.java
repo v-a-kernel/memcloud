@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.dao.IMemHostDao;
 import io.memcloud.memdns.dao.entry.MemHost;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class MemHostDaoImpl implements IMemHostDao {
 

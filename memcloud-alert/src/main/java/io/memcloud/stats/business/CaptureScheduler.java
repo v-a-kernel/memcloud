@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import io.memcloud.stats.business.impl.MemInstanceConnectionPool;
+import io.memcloud.stats.business.impl.ConcurrentMemInstanceConnectionPool;
 import net.rubyeye.xmemcached.MemcachedClient;
 
 /**
@@ -30,8 +30,9 @@ public class CaptureScheduler {
 	@Resource(name = "memInstanceMetaFetcher")
 	private IMemInstanceMetaFetcher memInstanceMetaFetcher;
 
+	/** Thread-safe: {@link ConcurrentMemInstanceConnectionPool} */
 	@Resource(name = "memInstanceConnectionPool")
-	private MemInstanceConnectionPool memInstanceConnectionPool;
+	private IMemInstanceConnectionPool memInstanceConnectionPool;
 
 	@Resource(name = "memInstanceFaultCapture")
 	private MemInstanceFaultCapture memInstanceFaultCapture;
@@ -44,19 +45,48 @@ public class CaptureScheduler {
 	public void start() {
 
 		if (started.compareAndSet(false, true)) {
+ 
+			startMetaScanner(); // schedule
 
-			List<String> memInstances = memInstanceMetaFetcher.scanMemInstances();
-			for (String instance : memInstances) {
-				int idx = instance.indexOf(":");
-				memInstanceConnectionPool.addClient(instance.substring(0, idx),
-						Integer.parseInt(instance.substring(idx + 1)));
-			}
+			startFaultCapture(); // one time
 
-			startFaultCapture();
-
-			startStatsCapture();
+			startStatsCapture(); // schedule
 		}
 
+	}
+	
+	private void startMetaScanner() {
+		ScheduledExecutorService scheduledService = Executors.newScheduledThreadPool(1);
+
+		final AtomicBoolean inited = new AtomicBoolean(false);
+		
+		// 每个 120s 执行一次任务
+		scheduledService.scheduleAtFixedRate(new Runnable() {
+
+			@Override
+			public void run() {
+				List<String> memInstances = memInstanceMetaFetcher.scanMemInstances();
+				if (! inited.get() ) {
+					LOG.info("mem-instance scaned: {}", memInstances);
+				}
+				
+				for (String instance : memInstances) {
+					int idx = instance.indexOf(":");
+					
+					MemcachedClient client = memInstanceConnectionPool.addClient(instance.substring(0, idx),
+							Integer.parseInt(instance.substring(idx + 1)));
+					
+					if (isNewlyClient(client)) {
+						LOG.info("detect a new meminstance and append it into FaultCaptureQueue: {}", instance);
+						startFaultCapture(client);
+					}
+					
+				}
+				
+				inited.set(true);
+			}
+
+		}, 5, 120, TimeUnit.SECONDS);
 	}
 
 	private void startFaultCapture() {
@@ -64,10 +94,20 @@ public class CaptureScheduler {
 		for (String clientName : clientPool.keySet()) {
 
 			MemcachedClient client = clientPool.get(clientName);
-			client.addStateListener(memInstanceFaultCapture);
-
+			startFaultCapture(client);
 		}
 	}
+	
+	private void startFaultCapture(MemcachedClient client) {
+		if ( isNewlyClient(client)) {
+			client.addStateListener(memInstanceFaultCapture); // newly appended
+		} 
+	}
+	
+	private boolean isNewlyClient(MemcachedClient client) {
+		return client.getStateListeners() == null || client.getStateListeners().isEmpty();
+	}
+	
 
 	private void startStatsCapture() {
 

@@ -21,6 +21,9 @@ public interface IMemInstanceConnectionPool {
 	public MemcachedClient addClient(String host, int port);
 	
 	
+	public boolean hasClient(String host, int port);
+	
+	
 	public Map<String, MemcachedClient> getConnectionPool();
 	
 }

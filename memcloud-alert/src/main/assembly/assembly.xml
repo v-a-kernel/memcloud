@@ -5,7 +5,7 @@
 
 	<!-- <id>${build.number}-mac</id> -->
 
-	<id>mac</id>
+	<id></id>
 
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<formats>
@@ -18,9 +18,10 @@
 			<directory>target/generated-resources/appassembler/jsw/${app.simple.name}/lib
 			</directory>
 			<outputDirectory>${project.build.finalName}/lib</outputDirectory>
+			<fileMode>0755</fileMode>
 			<includes>
 				<include>*.jar</include>
-				<include>libwrapper-macosx*</include>
+				<include>libwrapper-*</include>
 			</includes>
 		</fileSet>
 		<fileSet>

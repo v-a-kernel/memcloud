@@ -325,19 +325,6 @@ public class HttpUtil {
 	}
 	
 	
-	public static void main(String args[]) throws Exception {
-//		Map<String,String> map = new HashMap<String,String>();		
-//		map.put("uid", "1260981074");
-//		map.put("fids","[232,233,233]");
-//		System.out.println(doPost("http://www.weiguan.com/passport/relations.do",map));
-		
-		HttpPair httpPair = doGetCookie("http://passport.ku6.com/nonibw-session-create.htm?loginName=chinaliwee@163.com&password=tene1202&clientIP=%s&refer=weiguan&Client-Charset=UTF-8", 10);
-		System.out.println("statusCode:"+httpPair.statusCode);
-		System.out.println("body:"+httpPair.body);
-		System.out.println("nick:"+httpPair.cookiesMap.get("systemPPCLoginUserNickName"));
-		System.out.println("face:"+httpPair.cookiesMap.get("systemPPCLoginUserHeadFace"));
-		System.out.println("geneder:"+httpPair.cookiesMap.get("sysUserSex"));
-	}
 	
 	public static String doPost(String url,Map<String,String> map) {
 		return doPost(url,"utf-8",map);

@@ -5,7 +5,7 @@
 	
 	
 	<!-- 
-	<bean name="dynamicConfiguration" class="io.downgoon.jresty.commons.utils.DynamicProperties">
+	<bean name="dynamicConfiguration" class="com.github.downgoon.jresty.commons.utils.DynamicProperties">
 		<description>constructor method signature: String fileName,long delay,long period,String name,String charset</description>
 		<constructor-arg index="0" value="classpath:dynamic.properties"/>
 		<constructor-arg index="1" value="10000"/>

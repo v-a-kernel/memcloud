@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import io.downgoon.jresty.data.dao.IEntity;
+import com.github.downgoon.jresty.data.dao.IEntity;
 
 @Entity
 @Table(name = "app_conf")

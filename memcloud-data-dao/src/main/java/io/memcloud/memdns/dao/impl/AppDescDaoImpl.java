@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.dao.IAppDescDao;
 import io.memcloud.memdns.dao.entry.AppDesc;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class AppDescDaoImpl implements IAppDescDao {
 

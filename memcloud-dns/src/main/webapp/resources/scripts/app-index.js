@@ -142,9 +142,9 @@ function displayCopyrightProviderPagination(resJSON) {
 	
 	//显示普通按钮翻页按钮（参考google翻页按钮的布局原则：当前页尽可能在中间，左/右侧不够时向不够的那一侧靠拢）
 	//一次最多显示10个翻页按钮，翻页按钮控制在：[startPaginationIndex,endPaginationIndex)前闭后开的区间
-	var startPaginationIndex =  (curPageNum - (ku6_pagination_span_size/2));
-	var endPaginationIndex = (curPageNum + (ku6_pagination_span_size/2 + ku6_pagination_span_size%2));
-	//此时：endPaginationIndex - startPaginationIndex 恒等于 ku6_pagination_span_size
+	var startPaginationIndex =  (curPageNum - (pagination_span_size/2));
+	var endPaginationIndex = (curPageNum + (pagination_span_size/2 + pagination_span_size%2));
+	//此时：endPaginationIndex - startPaginationIndex 恒等于 pagination_span_size
 	//左边缺少的
 	var leftLack = (startPaginationIndex-pagination_firstpage_index<0 ? pagination_firstpage_index-startPaginationIndex : 0);
 	//右边缺少的
