@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.downgoon.jresty.data.dao.IEntity;
+import com.github.downgoon.jresty.data.dao.IEntity;
 
 /** App 与 MemGroup 的分配关系表 */
 @Entity

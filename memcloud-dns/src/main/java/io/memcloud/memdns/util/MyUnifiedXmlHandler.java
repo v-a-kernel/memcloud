@@ -13,8 +13,8 @@ import com.thoughtworks.xstream.io.ExtendedHierarchicalStreamWriterHelper;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
-import io.downgoon.jresty.rest.model.UnifiedResponse;
-import io.downgoon.jresty.rest.view.XStreamHandler;
+import com.github.downgoon.jresty.rest.model.UnifiedResponse;
+import com.github.downgoon.jresty.rest.view.XStreamHandler;
 
 public class MyUnifiedXmlHandler extends XStreamHandler {
 

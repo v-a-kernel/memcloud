@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.downgoon.jresty.data.dao.IEntity;
+import com.github.downgoon.jresty.data.dao.IEntity;
 
 /** 用户扩容申请，并等待管理员的审核  */
 @Entity

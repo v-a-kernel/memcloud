@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.dao.IScaleoutAppealDao;
 import io.memcloud.memdns.dao.entry.ScaleoutAppeal;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class ScaleoutAppealDaoImpl implements IScaleoutAppealDao {
 

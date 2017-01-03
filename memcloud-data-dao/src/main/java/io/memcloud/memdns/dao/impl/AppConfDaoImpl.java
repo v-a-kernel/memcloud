@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.dao.IAppConfDao;
 import io.memcloud.memdns.dao.entry.AppConf;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class AppConfDaoImpl implements IAppConfDao {
 

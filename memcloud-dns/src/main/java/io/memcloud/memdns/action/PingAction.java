@@ -1,7 +1,7 @@
 package io.memcloud.memdns.action;
 
-import io.downgoon.jresty.rest.model.UnifiedResponse;
-import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
+import com.github.downgoon.jresty.rest.model.UnifiedResponse;
+import com.github.downgoon.jresty.rest.view.DefaultHttpHeaders;
 
 public class PingAction extends BaseAction {
 

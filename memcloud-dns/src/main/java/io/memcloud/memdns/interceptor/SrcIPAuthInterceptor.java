@@ -8,9 +8,9 @@ import org.apache.struts2.StrutsStatics;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 
-import io.downgoon.jresty.commons.utils.DynamicProperties;
-import io.downgoon.jresty.rest.model.UnifiedResponse;
-import io.downgoon.jresty.rest.util.IPUtil;
+import com.github.downgoon.jresty.commons.utils.DynamicProperties;
+import com.github.downgoon.jresty.rest.model.UnifiedResponse;
+import com.github.downgoon.jresty.rest.util.IPUtil;
 
 /** 源IP限制授权 */
 public class SrcIPAuthInterceptor extends BaseInterceptor implements API4InternalAccess {

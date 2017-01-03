@@ -7,9 +7,9 @@
 	<package name="memcloud-default" extends="struts-default" namespace="/memcloud">
 		<interceptors>
 			<interceptor name="anti-remote-command-method"
-				class="io.downgoon.jresty.rest.struts2.interceptor.AntiRemoteCommandMethodInterceptor" />
+				class="com.github.downgoon.jresty.rest.struts2.interceptor.AntiRemoteCommandMethodInterceptor" />
 			<interceptor name="crossDomainInterceptor" 
-							class="io.downgoon.jresty.rest.struts2.interceptor.CrossDomainInterceptor" />
+							class="com.github.downgoon.jresty.rest.struts2.interceptor.CrossDomainInterceptor" />
 			
 			<interceptor name="baseAuthInterceptor" class="baseAuthInterceptor" />
 			<interceptor name="loginAuthInterceptor" class="loginAuthInterceptor" />

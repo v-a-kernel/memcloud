@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import com.mongodb.BasicDBObject;
 
-import io.downgoon.jresty.commons.utils.DateUtil;
+import com.github.downgoon.jresty.commons.utils.DateUtil;
 import io.memcloud.driver.mongodb.Constants;
 import io.memcloud.driver.mongodb.IMongodbStatManager;
 import io.memcloud.driver.mongodb.StatDBObject;

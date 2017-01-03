@@ -15,7 +15,7 @@
 	</bean>
 
 	<bean name="restExceptionHandlerAction" scope="prototype"
-		class="io.downgoon.jresty.rest.struts2.action.RestExceptionHandlerAction">
+		class="com.github.downgoon.jresty.rest.struts2.action.RestExceptionHandlerAction">
 		<property name="defaultExtension" value="json" />
 		<property name="restResultsHandler" ref="restResultsHandler" />
 	</bean>

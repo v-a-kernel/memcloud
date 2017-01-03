@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.downgoon.jresty.commons.security.URLEncodec;
+import com.github.downgoon.jresty.commons.security.URLEncodec;
 import io.memcloud.cas.IAccount;
 import io.memcloud.cas.IHttpTracker;
 import io.memcloud.cas.IllegalSessionException;

@@ -1,7 +1,7 @@
 package io.memcloud.cas.session;
 
-import io.downgoon.jresty.commons.security.HexCodec;
-import io.downgoon.jresty.commons.security.Md5Codec;
+import com.github.downgoon.jresty.commons.security.HexCodec;
+import com.github.downgoon.jresty.commons.security.Md5Codec;
 
 public class CastokenCodec {
 

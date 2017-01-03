@@ -10,7 +10,7 @@ import com.opensymphony.xwork2.ActionInvocation;
 import io.memcloud.cas.IAccount;
 import io.memcloud.cas.IHttpTracker;
 import io.memcloud.cas.IllegalSessionException;
-import io.downgoon.jresty.rest.model.UnifiedResponse;
+import com.github.downgoon.jresty.rest.model.UnifiedResponse;
 
 /**
  * 登录认证拦截器

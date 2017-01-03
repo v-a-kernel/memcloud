@@ -10,10 +10,10 @@
 //
 //import com.opensymphony.xwork2.ActionContext;
 //import com.opensymphony.xwork2.ActionInvocation;
-//import io.downgoon.jresty.commons.utils.DynamicProperties;
-//import io.downgoon.jresty.commons.utils.MD5;
+//import com.github.downgoon.jresty.commons.utils.DynamicProperties;
+//import com.github.downgoon.jresty.commons.utils.MD5;
 //
-//import io.downgoon.jresty.rest.model.UnifiedResponse;
+//import com.github.downgoon.jresty.rest.model.UnifiedResponse;
 //
 ///** 访问时需要签名的限制 */
 //public class SignAuthInterceptor extends BaseInterceptor implements API4InternalAccess {

@@ -6,8 +6,8 @@ import java.io.Writer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import io.downgoon.jresty.commons.utils.DynamicProperties;
-import io.downgoon.jresty.rest.view.JSHandler;
+import com.github.downgoon.jresty.commons.utils.DynamicProperties;
+import com.github.downgoon.jresty.rest.view.JSHandler;
 
 /**
  * JSONP接口进行域名限制控制，对于第三方的域名需要在配置白名单才可以访问

@@ -69,7 +69,7 @@
     	 <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 	
-	<bean id="entityDao" class="io.downgoon.jresty.data.dao.impl.HibernateEntityDaoImpl ">
+	<bean id="entityDao" class="com.github.downgoon.jresty.data.dao.impl.HibernateEntityDaoImpl ">
     </bean>    
 	
     <bean id="userDao" class="io.memcloud.memdns.dao.impl.UserDaoImpl" />

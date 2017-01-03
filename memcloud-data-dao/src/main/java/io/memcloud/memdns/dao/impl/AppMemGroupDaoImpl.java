@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import io.memcloud.memdns.dao.IAppMemGroupDao;
 import io.memcloud.memdns.dao.entry.AppMemGroup;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class AppMemGroupDaoImpl implements IAppMemGroupDao {
 

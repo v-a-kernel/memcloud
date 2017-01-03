@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.dao.IAppConfAuditDao;
 import io.memcloud.memdns.dao.entry.AppConfAudit;
 
-import io.downgoon.jresty.data.dao.IEntityDao;
+import com.github.downgoon.jresty.data.dao.IEntityDao;
 
 public class AppConfAuditDaoImpl implements IAppConfAuditDao {
 	

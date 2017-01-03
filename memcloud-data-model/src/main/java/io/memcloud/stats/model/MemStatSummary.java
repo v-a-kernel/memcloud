@@ -2,8 +2,8 @@ package io.memcloud.stats.model;
 
 import java.util.Date;
 
-import io.downgoon.jresty.commons.utils.DateUtil;
-import io.downgoon.jresty.commons.utils.HumanizedFormator;
+import com.github.downgoon.jresty.commons.utils.DateUtil;
+import com.github.downgoon.jresty.commons.utils.HumanizedFormator;
 
 /**
  * REFER:  http://blog.163.com/czg_e/blog/static/46104561201132852042812/ 

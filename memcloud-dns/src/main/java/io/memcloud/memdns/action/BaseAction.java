@@ -7,7 +7,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 import io.memcloud.cas.IAccount;
 import io.memcloud.memdns.model.Constants;
-import io.downgoon.jresty.rest.struts2.action.UnifiedRestAction;
+import com.github.downgoon.jresty.rest.struts2.action.UnifiedRestAction;
 
 public class BaseAction extends UnifiedRestAction implements Constants {
 

@@ -5,8 +5,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.downgoon.jresty.commons.utils.concurrent.ConcurrentResourceContainer;
-import io.downgoon.jresty.commons.utils.concurrent.ResourceLifecycle;
+import com.github.downgoon.jresty.commons.utils.concurrent.ConcurrentResourceContainer;
+import com.github.downgoon.jresty.commons.utils.concurrent.ResourceLifecycle;
 import io.memcloud.stats.business.IMemInstanceConnectionPool;
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.MemcachedClientBuilder;

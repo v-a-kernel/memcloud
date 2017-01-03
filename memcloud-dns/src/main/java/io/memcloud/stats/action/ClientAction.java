@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import io.memcloud.memdns.action.BaseAction;
 import io.memcloud.stats.business.IMemInstanceConnectionPool;
 
-import io.downgoon.jresty.rest.view.DefaultHttpHeaders;
+import com.github.downgoon.jresty.rest.view.DefaultHttpHeaders;
 
 /**
  * @author ganghuawang
