@@ -7,7 +7,30 @@
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>memcloud</name>
-	<url>http://maven.apache.org</url>
+	<description>a distributed cluster for memcached</description>
+	<url>http://github.com/downgoon/memcloud</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:git@github.com:downgoon/memcloud.git</connection>
+		<developerConnection>scm:git:git@github.com:downgoon/memcloud.git</developerConnection>
+		<url>http://github.com/downgoon/memcloud</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>downgoon</id>
+			<name>downgoon</name>
+			<email>downgoon@qq.com</email>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,7 +67,7 @@
 				<build.profile>op</build.profile>
 			</properties>
 		</profile>
-		
+
 		<!-- qa alias -->
 		<profile>
 			<id>sit</id>
@@ -54,6 +77,45 @@
 			<properties>
 				<build.profile>qa</build.profile>
 			</properties>
+		</profile>
+
+		<!-- profiles about deploy -->
+		<profile>
+			<id>ffan</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>ffan-snapshots</id>
+					<name>Nexus Snapshot Repository</name>
+					<url>http://maven.intra.ffan.com/nexus/content/repositories/snapshots/</url>
+				</snapshotRepository>
+				<repository>
+					<id>ffan-releases</id>
+					<name>Nexus Release Repository</name>
+					<url>http://maven.intra.ffan.com/nexus/content/repositories/releases/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+
+		<profile>
+			<id>oss</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>oss-snapshots</id>
+					<name>Central Public Snapshots</name>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+				<repository>
+					<id>oss-releases</id>
+					<name>Central Public Releases</name>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+				</repository>
+			</distributionManagement>
 		</profile>
 	</profiles>
 
@@ -83,7 +145,7 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -115,6 +177,37 @@
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 				</configuration>
+			</plugin>
+
+			<!-- deploy -->
+			<!-- source attachment on release -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- javadoc attachment on release -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- Download sources and javadocs for eclipse -->
@@ -177,14 +270,14 @@
 	<modules>
 		<module>memcloud-client</module>
 		<module>memcloud-agent</module>
-		
+
 		<module>memcloud-dns</module>
 		<module>memcloud-alert</module>
-		
+
 		<module>memcloud-cas</module>
 		<module>memcloud-data-dao</module>
 		<module>memcloud-data-mongodb</module>
-		
+
 		<module>memcloud-data-model</module>
 		<module>memcloud-conf</module>
 	</modules>
