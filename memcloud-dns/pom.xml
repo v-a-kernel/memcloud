@@ -112,7 +112,7 @@
 		<dependency>
 			<groupId>com.github.downgoon</groupId>
 			<artifactId>jresty-rest</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${jresty.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>*</artifactId>
@@ -124,7 +124,7 @@
 		<dependency>
 			<groupId>com.github.downgoon</groupId>
 			<artifactId>jresty-data-cache</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${jresty.version}</version>
 		</dependency>
 
 
