@@ -1,4 +1,6 @@
 # memcloud
+
+[![Join the chat at https://gitter.im/memcloud/Lobby](https://badges.gitter.im/memcloud/Lobby.svg)](https://gitter.im/memcloud/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 a distributed cluster for memcached
 
 ## install and start memcloud
